@@ -3,6 +3,7 @@ package br.edu.exemplo;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -248,5 +249,95 @@ class CarrinhoTest {
                 () -> carrinho.adicionar(null));
         assertEquals("Produto não pode ser nulo", erro.getMessage());
         assertEquals(0, carrinho.getQuantidadeItens());
+    }
+
+    // ---------------------------------------------------------------- R6
+
+    @Test
+    @DisplayName("R6 — Subtotal R$ 600,00 recebe desconto de R$ 60,00 e total R$ 540,00")
+    void r6CompraDe600DeveCustar540() {
+        // Arrange
+        Carrinho carrinho = new Carrinho();
+        carrinho.adicionar(new Produto("Monitor", 600.00));
+
+        // Act
+        double total = carrinho.getTotal();
+
+        // Assert
+        assertEquals(600.00, carrinho.getSubtotal(), DELTA);
+        assertEquals(60.00, carrinho.getDesconto(), DELTA);
+        assertEquals(540.00, total, DELTA);
+    }
+
+    @ParameterizedTest(name = "subtotal {0} → desconto {1}, total {2}")
+    @CsvSource({
+            "499.99,  0.00,   499.99",   // logo abaixo da fronteira: sem desconto
+            "500.00,  50.00,  450.00",   // na fronteira: com desconto (igual ou superior)
+            "500.01,  50.001, 450.009",  // logo acima da fronteira: com desconto
+            "0.00,    0.00,   0.00"      // carrinho com item gratuito
+    })
+    @DisplayName("R6 — Fronteira do desconto em R$ 500,00")
+    void r6FronteiraDoDesconto(double preco, double descontoEsperado, double totalEsperado) {
+        // Arrange
+        Carrinho carrinho = new Carrinho();
+        carrinho.adicionar(new Produto("Item", preco));
+
+        // Act
+        double total = carrinho.getTotal();
+
+        // Assert
+        assertEquals(preco, carrinho.getSubtotal(), DELTA);
+        assertEquals(descontoEsperado, carrinho.getDesconto(), DELTA);
+        assertEquals(totalEsperado, total, DELTA);
+    }
+
+    @Test
+    @DisplayName("R6 — Desconto é calculado sobre a soma dos itens (300 + 200 = 500 → 450)")
+    void r6DescontoSobreASomaDeVariosItens() {
+        // Arrange
+        Carrinho carrinho = new Carrinho();
+        carrinho.adicionar(new Produto("Cadeira", 300.00));
+        carrinho.adicionar(new Produto("Mesa", 200.00));
+
+        // Act
+        double total = carrinho.getTotal();
+
+        // Assert
+        assertEquals(500.00, carrinho.getSubtotal(), DELTA);
+        assertEquals(50.00, carrinho.getDesconto(), DELTA);
+        assertEquals(450.00, total, DELTA);
+    }
+
+    @Test
+    @DisplayName("R4×R6 — Remover item e cair abaixo de R$ 500,00 faz o desconto desaparecer")
+    void r6DescontoSomeAoRemoverItemEFicarAbaixoDaFronteira() {
+        // Arrange
+        Carrinho carrinho = new Carrinho();
+        Produto cadeira = new Produto("Cadeira", 300.00);
+        Produto mesa = new Produto("Mesa", 200.00);
+        carrinho.adicionar(cadeira);
+        carrinho.adicionar(mesa);
+
+        // Act
+        carrinho.remover(mesa);
+
+        // Assert
+        assertEquals(300.00, carrinho.getSubtotal(), DELTA);
+        assertEquals(0.00, carrinho.getDesconto(), DELTA);
+        assertEquals(300.00, carrinho.getTotal(), DELTA);
+    }
+
+    @Test
+    @DisplayName("R6 — Carrinho vazio não tem desconto")
+    void r6CarrinhoVazioNaoTemDesconto() {
+        // Arrange
+        Carrinho carrinho = new Carrinho();
+
+        // Act
+        double desconto = carrinho.getDesconto();
+
+        // Assert
+        assertEquals(0.0, desconto, DELTA);
+        assertEquals(0.0, carrinho.getSubtotal(), DELTA);
     }
 }
