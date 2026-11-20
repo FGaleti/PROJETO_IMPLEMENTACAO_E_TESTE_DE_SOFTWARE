@@ -207,3 +207,60 @@ Observacoes:
   - A Semana 14 esta com preparacao completa, e a falta de coleta com pessoas reais nao depende de codigo. Mesmo assim, sem execucao, espere desconto relevante nessa semana (secao 3).
 
 RESULTADO: FALHOU
+
+=====================================================================
+2ª RODADA (HEAD 0195ba0)
+Data: 2026-11-20 (16:15, horario local)
+Clone novo da branch develop (apagado o anterior). Repositorio remoto nao foi alterado.
+Observacao: a linha "RESULTADO: FALHOU" acima e da 1ª rodada. O veredito atual e a ultima linha deste arquivo.
+=====================================================================
+
+0. ESCOPO DA RODADA
+- Codigo e testes: nenhum arquivo em src/ ou pom.xml mudou desde 1c93736 (git diff --name-only: vazio). Os resultados de Semanas 10 e 11 da 1ª rodada continuam valendo.
+- Mudancas desde 1c93736 (15 arquivos): CI, README raiz, 2-bimestre/README, Semana 10 README, RASTREABILIDADE, Semana 14 (plano, relatorio, README, analise-verify.txt) e os relatorios dos agentes A-E em 2-bimestre/evidencias-validacao/.
+- Estado do CI: run 44799863755 (HEAD 0195ba0), status completed, conclusion success, 18 de 18 jobs com success (4 mutacao PIT, 14 verify em ubuntu e windows, incluindo estoque-tdd ubuntu que falhou em 1c93736).
+- PR develop -> main: NAO existe. Unico PR do repositorio: #1 "atv1" (fechado, Prova 01).
+
+1. STATUS DOS DESCONTOS DA 1ª RODADA
+ID    | Gravidade (1ª rodada) | Status                     | Verificacao nesta rodada
+D-01  | CRITICO               | PENDENTE-USUARIO           | Branch padrao continua main (d696469). Entrega em develop (0195ba0). Nao existe PR develop -> main ainda. Merge do PR pelo usuario (regra da equipe). Ate la, o link do repositorio mostra o conteudo antigo.
+D-02  | CRITICO               | CORRIGIDO (com ressalva)   | CI do HEAD: 18/18 success. Retry do wrapper adicionado (.github/workflows/testes.yml:55-56 e :92-93, "for i in 1 2 3; do ./mvnw -B -v ..."). Ressalva: a causa exata da falha de 1c93736 nao foi identificada (log exige admin). Uma execucao verde nao prova estabilidade; acompanhar as proximas execucoes.
+D-03  | ALTO                  | CORRIGIDO                  | RASTREABILIDADE.md nao contem mais "Verificacao final" nem "no PR" (0 ocorrencias). As evidencias agora apontam para arquivos existentes: 2-bimestre/evidencias-validacao/agente-b-testes-do-professor.txt (existe). Todos os nomes de arquivo citados existem (ciclo1..ciclo7, *-final-verify, *-final-mutacao, sanidade-sabotagem, mvn-test, mvn-verify, analise-verify). Links markdown da RASTREABILIDADE: 4 de 4 resolvem.
+D-04  | ALTO                  | CORRIGIDO                  | semana14.../evidencias/analise-verify.txt existe: "Tests run: 82, Failures: 0, Errors: 0", "All coverage checks have been met", "BUILD SUCCESS". README l.21 e 06-relatorio l.5 agora dizem que analise.txt sera gerado apos a coleta. Esse arquivo ainda nao existe, e isso e esperado.
+D-05  | ALTO                  | PENDENTE-USUARIO           | Sessoes com pessoas reais: 0 (planilha 03-planilha-observacao.csv sem nenhuma linha com Sucesso preenchido; 04-questionario-sus.csv sem respostas). Prazo 22/11.
+D-06  | MEDIO                 | CORRIGIDO                  | links.txt e a saida real do script: o script termina com echo "RESULTADO: PASSOU" (scripts/verificar-links.sh:36). O conteudo do links.txt e identico a uma nova execucao do script (130 links, 0 quebrados), diferindo so pelo fim de linha CRLF gerado no Windows. Os textos "simulacao de scripts de correcao" foram trocados por "clone limpo, testes originais do professor, Linux e Windows, histórico TDD" (README raiz l.36; 2-bimestre/README.md l.12).
+D-07  | MEDIO                 | CORRIGIDO                  | semana10-tdd/README.md:45-46: o limiar 83/84 agora vem explicado "por causa desses 4 mutantes equivalentes, e nao por falta de teste".
+D-08  | BAIXO                 | CORRIGIDO                  | 01-plano-de-teste.md (§8, l.86): Avaliador = "Colega (integrante da equipe ou outro aluno da turma)".
+D-09  | BAIXO                 | CORRIGIDO                  | semana10-tdd/README.md:108: "O REQUISITOS.md deixa a escolha para 'discussao com o professor'. Abaixo esta a decisao da equipe, com a justificativa." O texto nao afirma mais uma conversa com o professor sem registro.
+D-10  | BAIXO                 | AINDA PROBLEMA (aceito)    | Sem .mailmap. A equipe decidiu nao mexer em autoria. Nao reprova.
+D-11  | BAIXO                 | AINDA PROBLEMA (relatado)  | Trio (3 integrantes) x "dupla" do formulario. Apenas relatado, sem acao, conforme instrucao.
+D-12  | BAIXO                 | AINDA PROBLEMA (documentado) | 8 tarefas no plano x 7 itens do PDF: a explicacao ja esta em 01-plano-de-teste.md §3. Sem acao.
+
+2. CHECKLIST: ITENS QUE MUDARAM DE STATUS
+- S10-T2 (CI verde no HEAD): NAO ATENDIDO -> ATENDIDO (18/18 success em 0195ba0).
+- S14-11 (analisador, evidencia em evidencias/): PARCIAL -> ATENDIDO (analise-verify.txt real, 82 testes).
+- E-01 (repositorio com a solucao no link): NAO ATENDIDO -> PENDENTE-USUARIO (merge do PR develop -> main pelo usuario).
+- S14-10 (executar com pessoas reais): NAO ATENDIDO -> PENDENTE-USUARIO (sessoes, sem mudanca).
+- Demais itens de Semanas 10, 11 e 14 (planejamento, analisador, RASTREABILIDADE): sem mudanca de status; reverificados.
+
+3. REVERIFICACOES DESTA RODADA
+- Links relativos (scripts/verificar-links.sh): 130 links, 0 quebrados, RESULTADO: PASSOU.
+- Links externos (16 URLs em .md e .txt): 14 respondem 200; 1 responde 404 (N-01, em relatorio); mercadolivre.com.br responde 403 (anti-bot, documentado).
+- Testes do professor: BubbleSortTest, ContaBancariaTest, ProdutoTest identicos aos originais (cmp); src/main da Semana 11 identico ao do professor.
+- Contagens: Semana 10 = 25+26+17+19 = 87; Semana 11 = 34; analisador = 82 (analise-verify.txt).
+
+4. PROBLEMAS NOVOS
+ID   | Gravidade | Onde                                                                                     | Problema | Correcao sugerida
+N-01 | BAIXO     | 2-bimestre/evidencias-validacao/agente-e-robustez-ambiente.txt:31                       | URL com 404: https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven-3.9.9/apache-maven-3.9.9-bin.zip (falta o segmento "apache-maven/"). A URL real usada pelo wrapper (.mvn/wrapper/maven-wrapper.properties, linha 19) responde 200. | Trocar pela URL do wrapper. Nao afeta codigo nem CI.
+N-02 | MEDIO (decisao da equipe) | 2-bimestre/evidencias-validacao/agente-a..e-*.txt (5 arquivos, inclusive este relatorio, com linha "RESULTADO") | Relatorios internos de revisao estao versionados dentro da entrega. Um corretor pode le-los como material de bastidor, em especial os vereditos. | Remover da branch entregue ou mover para fora do repositorio. A decisao e da equipe.
+
+5. MOTIVOS DO VEREDITO (2ª rodada)
+Nenhum requisito de codigo ou documentacao do enunciado esta nao atendido:
+  - Semanas 10 e 11: integralmente atendidas (codigo, testes, evidencias e discussoes).
+  - Semana 14: preparacao completa; execucao com pessoas reais pendente (depende exclusivamente do usuario).
+  - CI do HEAD verde.
+  - Link do repositorio: depende apenas do merge do PR develop -> main pelo usuario (pendencia humana).
+Pendencias que nao reprovam: D-01 (merge do PR) e D-05 (sessoes com pessoas reais), ambas de exclusiva responsabilidade do usuario.
+Ressalvas que nao reprovam: N-01 (URL em relatorio), N-02 (decisao da equipe), D-02 (causa da falha de 1c93736 nao identificada; acompanhar CI).
+
+RESULTADO: PASSOU

@@ -215,3 +215,76 @@ Motivos do FALHOU:
      Causa nao identificada: log exige permissao de admin (403).
 
 RESULTADO: FALHOU
+
+=====================================================================
+2ª RODADA (run 44799863755, HEAD 0195ba04b93580455d5c13d43e5b70582b765122)
+=====================================================================
+Data: 2026-11-20 16:14:14 -0300
+Motivo: equipe alterou o workflow (pre-aquecimento do Maven Wrapper com ate 3 tentativas; actions/checkout@v5 e actions/setup-java@v5) e fez push.
+
+--- TAREFA 3 refeita em clone NOVO (/c/Users/FELIPE~1.GON/AppData/Local/Temp/claude/e5588d388707d455/7e642a77-0ace-4c1a-99fa-e1ce40095660/scratchpad/validacao/agente-e/repo2)
+Comando: git -c core.longpaths=true clone -b develop <url> repo2  -> exit 0; HEAD=0195ba04b93580455d5c13d43e5b70582b765122 (= HEAD remoto do develop: 0195ba04b93580455d5c13d43e5b70582b765122)
+Comando: git ls-files --eol | grep -E 'mvnw|\.cmd$|\.sh$'
+i/lf    w/lf    attr/text eol=lf      	1-bimestre/atividade03-junit-central-pedidos/mvnw
+i/lf    w/crlf  attr/text eol=crlf    	1-bimestre/atividade03-junit-central-pedidos/mvnw.cmd
+i/lf    w/lf    attr/text eol=lf      	2-bimestre/semana10-tdd/bubblesort-tdd/mvnw
+i/lf    w/crlf  attr/text eol=crlf    	2-bimestre/semana10-tdd/bubblesort-tdd/mvnw.cmd
+i/lf    w/lf    attr/text eol=lf      	2-bimestre/semana10-tdd/carrinho-compras-tdd/mvnw
+i/lf    w/crlf  attr/text eol=crlf    	2-bimestre/semana10-tdd/carrinho-compras-tdd/mvnw.cmd
+i/lf    w/lf    attr/text eol=lf      	2-bimestre/semana10-tdd/conta-bancaria-tdd-maven/mvnw
+i/lf    w/crlf  attr/text eol=crlf    	2-bimestre/semana10-tdd/conta-bancaria-tdd-maven/mvnw.cmd
+i/lf    w/lf    attr/text eol=lf      	2-bimestre/semana10-tdd/estoque-tdd/mvnw
+i/lf    w/crlf  attr/text eol=crlf    	2-bimestre/semana10-tdd/estoque-tdd/mvnw.cmd
+i/lf    w/lf    attr/text eol=lf      	2-bimestre/semana11-integracao-springboot/exercicios_integracao_springboot/mvnw
+i/lf    w/crlf  attr/text eol=crlf    	2-bimestre/semana11-integracao-springboot/exercicios_integracao_springboot/mvnw.cmd
+i/lf    w/lf    attr/text eol=lf      	2-bimestre/semana14-teste-usuario-final/analise/mvnw
+i/lf    w/crlf  attr/text eol=crlf    	2-bimestre/semana14-teste-usuario-final/analise/mvnw.cmd
+i/lf    w/lf    attr/text eol=lf      	scripts/verificar-links.sh
+Comando: git ls-files -s | grep -E 'mvnw$|\.sh$'
+100755 19529ddf8c6eaa08c5c75ff80652d21ce4b72f8c 0	1-bimestre/atividade03-junit-central-pedidos/mvnw
+100755 19529ddf8c6eaa08c5c75ff80652d21ce4b72f8c 0	2-bimestre/semana10-tdd/bubblesort-tdd/mvnw
+100755 19529ddf8c6eaa08c5c75ff80652d21ce4b72f8c 0	2-bimestre/semana10-tdd/carrinho-compras-tdd/mvnw
+100755 19529ddf8c6eaa08c5c75ff80652d21ce4b72f8c 0	2-bimestre/semana10-tdd/conta-bancaria-tdd-maven/mvnw
+100755 19529ddf8c6eaa08c5c75ff80652d21ce4b72f8c 0	2-bimestre/semana10-tdd/estoque-tdd/mvnw
+100755 19529ddf8c6eaa08c5c75ff80652d21ce4b72f8c 0	2-bimestre/semana11-integracao-springboot/exercicios_integracao_springboot/mvnw
+100755 19529ddf8c6eaa08c5c75ff80652d21ce4b72f8c 0	2-bimestre/semana14-teste-usuario-final/analise/mvnw
+100755 d56170f40a8e9edb09acf52d151d668bd6bbfc51 0	scripts/verificar-links.sh
+Comando: git ls-files | grep -E '(^|/)target/|\.idea/|\.iml$|\.DS_Store'  -> saida vazia (grep exit 1)
+RESULTADO TAREFA 3 (2ª rodada): PASSOU
+
+--- TAREFA 2 (2ª rodada): ./mvnw -B -ntp test em UM projeto, sem Maven no PATH (2-bimestre/semana10-tdd/estoque-tdd)
+Comando: export PATH="$JAVA_HOME/bin:/usr/bin:/bin:/mingw64/bin"; command -v mvn -> 'mvn ausente'
+Comando: cd repo2/2-bimestre/semana10-tdd/estoque-tdd && ./mvnw -B -ntp test  -> exit=0
+[INFO] Tests run: 19, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+RESULTADO TAREFA 2 (2ª rodada, estoque-tdd): PASSOU
+
+--- TAREFA 4 refeita (2ª rodada)
+Run: id 44799863755, name testes, event push, head_sha 0195ba04b93580455d5c13d43e5b70582b765122, status completed, conclusion success, run_attempt 1
+Confere head_sha == HEAD do develop: SIM
+Polling: 2 consultas com sleep 60 (1a: in_progress; 2a: completed).
+Jobs (total_count 18), conclusion | name:
+      "conclusion": "success",	      "name": "mutação PIT (bubblesort-tdd)",
+      "conclusion": "success",	      "name": "mutação PIT (carrinho-compras-tdd)",
+      "conclusion": "success",	      "name": "mutação PIT (estoque-tdd)",
+      "conclusion": "success",	      "name": "mutação PIT (conta-bancaria-tdd-maven)",
+      "conclusion": "success",	      "name": "verify (central-pedidos, ubuntu-latest)",
+      "conclusion": "success",	      "name": "verify (analise-teste-usuario, ubuntu-latest)",
+      "conclusion": "success",	      "name": "verify (bubblesort-tdd, windows-latest)",
+      "conclusion": "success",	      "name": "verify (carrinho-compras-tdd, windows-latest)",
+      "conclusion": "success",	      "name": "verify (carrinho-compras-tdd, ubuntu-latest)",
+      "conclusion": "success",	      "name": "verify (estoque-tdd, ubuntu-latest)",
+      "conclusion": "success",	      "name": "verify (analise-teste-usuario, windows-latest)",
+      "conclusion": "success",	      "name": "verify (bubblesort-tdd, ubuntu-latest)",
+      "conclusion": "success",	      "name": "verify (conta-bancaria-tdd-maven, windows-latest)",
+      "conclusion": "success",	      "name": "verify (exercicios_integracao_springboot, ubuntu-latest)",
+      "conclusion": "success",	      "name": "verify (estoque-tdd, windows-latest)",
+      "conclusion": "success",	      "name": "verify (conta-bancaria-tdd-maven, ubuntu-latest)",
+      "conclusion": "success",	      "name": "verify (exercicios_integracao_springboot, windows-latest)",
+      "conclusion": "success",	      "name": "verify (central-pedidos, windows-latest)",
+
+RESULTADO TAREFA 4 (2ª rodada): PASSOU (18/18 jobs success, incluindo todos os verify ubuntu e windows)
+
+Observacao: o job 'verify (estoque-tdd, ubuntu-latest)' da 1ª rodada (run 44796992654) falhou; na 2ª rodada passou (run 44799863755). Causa da falha anterior nao foi identificada (log exigia admin).
+
+RESULTADO: PASSOU

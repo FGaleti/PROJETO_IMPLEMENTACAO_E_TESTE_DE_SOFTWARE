@@ -18,6 +18,14 @@ OK        2-bimestre/README.md -> semana14-teste-usuario-final/KIT-SESSAO-RAPIDA
 OK        2-bimestre/README.md -> semana14-teste-usuario-final/06-relatorio-final.md
 OK        2-bimestre/README.md -> semana14-teste-usuario-final/analise/
 OK        2-bimestre/README.md -> evidencias-validacao/
+OK        2-bimestre/evidencias-validacao/RELATORIO-VALIDACAO.md -> agente-a-script-ingenuo.txt
+OK        2-bimestre/evidencias-validacao/RELATORIO-VALIDACAO.md -> agente-b-testes-do-professor.txt
+OK        2-bimestre/evidencias-validacao/RELATORIO-VALIDACAO.md -> agente-c-corretor-rubrica.txt
+OK        2-bimestre/evidencias-validacao/RELATORIO-VALIDACAO.md -> agente-d-tdd-historico.txt
+OK        2-bimestre/evidencias-validacao/RELATORIO-VALIDACAO.md -> agente-e-robustez-ambiente.txt
+OK        2-bimestre/evidencias-validacao/RELATORIO-VALIDACAO.md -> ../../scripts/verificar-links.sh
+OK        2-bimestre/evidencias-validacao/RELATORIO-VALIDACAO.md -> links.txt
+OK        2-bimestre/evidencias-validacao/RELATORIO-VALIDACAO.md -> ../semana14-teste-usuario-final/KIT-SESSAO-RAPIDA.md
 OK        2-bimestre/semana10-tdd/README.md -> evidencias/bubblesort-tdd-ciclo0-red.txt
 OK        2-bimestre/semana10-tdd/README.md -> evidencias/bubblesort-tdd-ciclo1-green.txt
 OK        2-bimestre/semana10-tdd/README.md -> evidencias/bubblesort-tdd-ciclo1-refactor.txt
@@ -129,5 +137,5 @@ OK        README.md -> RASTREABILIDADE.md
 OK        README.md -> 2-bimestre/evidencias-validacao/
 OK        README.md -> .github/workflows/testes.yml
 
-Links relativos verificados: 130 | quebrados: 0
+Links relativos verificados: 138 | quebrados: 0
 RESULTADO: PASSOU
