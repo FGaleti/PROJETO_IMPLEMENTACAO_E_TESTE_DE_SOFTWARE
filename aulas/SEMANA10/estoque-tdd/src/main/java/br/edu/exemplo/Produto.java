@@ -1,5 +1,10 @@
 package br.edu.exemplo;
 
+/**
+ * Produto com controle de estoque. Operações inválidas são ignoradas (estoque
+ * inalterado, sem exceção): entrada menor ou igual a zero (R6), retirada menor
+ * ou igual a zero e retirada maior que o disponível (R5).
+ */
 public class Produto {
 
     private String nome;
@@ -25,7 +30,7 @@ public class Produto {
     }
 
     public void retirarEstoque(int quantidade) {
-        if (quantidade <= this.quantidade) {
+        if (quantidade > 0 && quantidade <= this.quantidade) {
             this.quantidade -= quantidade;
         }
     }
