@@ -35,4 +35,20 @@ class CarrinhoTest {
         // Assert
         assertEquals(0.0, total, DELTA);
     }
+
+    // ---------------------------------------------------------------- R2
+
+    @Test
+    @DisplayName("R2 — Adicionar Teclado de R$ 100,00 deve resultar em total R$ 100,00")
+    void r2DeveAdicionarUmProduto() {
+        // Arrange
+        Carrinho carrinho = new Carrinho();
+        Produto teclado = new Produto("Teclado", 100.00);
+
+        // Act
+        carrinho.adicionar(teclado);
+
+        // Assert
+        assertEquals(100.00, carrinho.getTotal(), DELTA);
+    }
 }
