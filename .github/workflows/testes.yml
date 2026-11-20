@@ -1,0 +1,86 @@
+name: testes
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: verify (${{ matrix.nome }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - nome: bubblesort-tdd
+            caminho: aulas/SEMANA10/bubblesort-tdd
+          - nome: carrinho-compras-tdd
+            caminho: aulas/SEMANA10/carrinho-compras-tdd
+          - nome: conta-bancaria-tdd-maven
+            caminho: aulas/SEMANA10/conta-bancaria-tdd-maven
+          - nome: estoque-tdd
+            caminho: aulas/SEMANA10/estoque-tdd
+          - nome: exercicios_integracao_springboot
+            caminho: aulas/SEMANA11/exercicios_integracao_springboot
+          - nome: analise-teste-usuario
+            caminho: aulas/SEMANA14/teste-usuario-final/analise
+    defaults:
+      run:
+        working-directory: ${{ matrix.caminho }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Java 17 (Temurin) com cache do Maven
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: mvn verify (testes + checagem de cobertura JaCoCo)
+        run: mvn -B -ntp verify
+
+      - name: Publica relatórios JaCoCo e Surefire
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorios-${{ matrix.nome }}
+          path: |
+            ${{ matrix.caminho }}/target/site/jacoco/
+            ${{ matrix.caminho }}/target/surefire-reports/
+          if-no-files-found: warn
+
+  mutacao:
+    name: mutação PIT (${{ matrix.nome }})
+    runs-on: ubuntu-latest
+    continue-on-error: true   # não bloqueante
+    strategy:
+      fail-fast: false
+      matrix:
+        nome: [bubblesort-tdd, carrinho-compras-tdd, conta-bancaria-tdd-maven, estoque-tdd]
+    defaults:
+      run:
+        working-directory: aulas/SEMANA10/${{ matrix.nome }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Java 17 (Temurin) com cache do Maven
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: mvn -Pmutacao verify
+        run: mvn -B -ntp -Pmutacao verify
+
+      - name: Publica relatório PIT
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pit-${{ matrix.nome }}
+          path: aulas/SEMANA10/${{ matrix.nome }}/target/pit-reports/
+          if-no-files-found: warn
