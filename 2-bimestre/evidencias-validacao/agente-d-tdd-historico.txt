@@ -1,0 +1,374 @@
+# Agente D - TDD e historico git (Semana 10 e arquivos movidos)
+Data: 2026-11-20 16:02:05 -0300
+Repositorio: clone de origin/develop em /c/Users/FELIPE~1.GON/AppData/Local/Temp/claude/e5588d388707d455/7e642a77-0ace-4c1a-99fa-e1ce40095660/scratchpad/validacao/agente-d/repo, HEAD 1c93736, 70 commits.
+Todos os comandos rodaram no clone. Nenhum commit, push ou alteracao foi feito em repositorio.
+
+## TAREFA 1 - Ordem RED antes de GREEN
+
+### 1a. git log --reverse --follow por src/main e src/test de cada projeto
+$ git log --reverse --format='%h %ad %s' --date=iso --follow -- 2-bimestre/semana10-tdd/bubblesort-tdd/src/main
+3344833 2026-11-20 15:45:22 -0300 refactor(estrutura): move as Semanas 10, 11 e 14 para 2-bimestre/
+
+$ git log --reverse --format='%h %ad %s' --date=iso --follow -- 2-bimestre/semana10-tdd/bubblesort-tdd/src/test
+3344833 2026-11-20 15:45:22 -0300 refactor(estrutura): move as Semanas 10, 11 e 14 para 2-bimestre/
+
+$ git log --reverse --format='%h %ad %s' --date=iso --follow -- 2-bimestre/semana10-tdd/carrinho-compras-tdd/src/main
+3344833 2026-11-20 15:45:22 -0300 refactor(estrutura): move as Semanas 10, 11 e 14 para 2-bimestre/
+
+$ git log --reverse --format='%h %ad %s' --date=iso --follow -- 2-bimestre/semana10-tdd/carrinho-compras-tdd/src/test
+3344833 2026-11-20 15:45:22 -0300 refactor(estrutura): move as Semanas 10, 11 e 14 para 2-bimestre/
+
+$ git log --reverse --format='%h %ad %s' --date=iso --follow -- 2-bimestre/semana10-tdd/conta-bancaria-tdd-maven/src/main
+3344833 2026-11-20 15:45:22 -0300 refactor(estrutura): move as Semanas 10, 11 e 14 para 2-bimestre/
+
+$ git log --reverse --format='%h %ad %s' --date=iso --follow -- 2-bimestre/semana10-tdd/conta-bancaria-tdd-maven/src/test
+3344833 2026-11-20 15:45:22 -0300 refactor(estrutura): move as Semanas 10, 11 e 14 para 2-bimestre/
+
+$ git log --reverse --format='%h %ad %s' --date=iso --follow -- 2-bimestre/semana10-tdd/estoque-tdd/src/main
+3344833 2026-11-20 15:45:22 -0300 refactor(estrutura): move as Semanas 10, 11 e 14 para 2-bimestre/
+
+$ git log --reverse --format='%h %ad %s' --date=iso --follow -- 2-bimestre/semana10-tdd/estoque-tdd/src/test
+3344833 2026-11-20 15:45:22 -0300 refactor(estrutura): move as Semanas 10, 11 e 14 para 2-bimestre/
+
+### 1b. git log --reverse -- 2-bimestre/semana10-tdd
+$ git log --reverse --format='%h %s' -- 2-bimestre/semana10-tdd
+3344833 refactor(estrutura): move as Semanas 10, 11 e 14 para 2-bimestre/
+57051ea build: Maven Wrapper 3.9.9 em todos os projetos e .gitattributes
+dd7588b docs: READMEs por bimestre, índice com link direto para cada projeto e caminhos atualizados
+
+### 1c. Historico TDD real (caminho antes do git mv: aulas/SEMANA10), ordem cronologica
+$ git log --all --reverse --format='%h %ad %s' --date=short -- aulas/SEMANA10
+a849b02 2026-11-20 chore: importa código-base original do professor (Semanas 10, 11 e 14)
+38611b0 2026-11-20 build(semana10): adiciona JaCoCo (check 100% em verify) e PIT (profile mutacao)
+e082267 2026-11-20 test(semana10): registra RED inicial dos projetos com testes prontos
+6940236 2026-11-20 feat(bubblesort): implementa ordenar() com trocas adjacentes (R1-R3 GREEN)
+d576e52 2026-11-20 refactor(bubblesort): extrai método trocar(i, j)
+338dfa5 2026-11-20 test(bubblesort): casos adicionais, oráculo e contrato para vetor null (RED)
+f04c061 2026-11-20 feat(bubblesort): ordenar() ignora vetor null (GREEN)
+9330a9f 2026-11-20 test(bubblesort): especifica parada antecipada por contagem de passagens (RED)
+86bc88d 2026-11-20 feat(bubblesort): parada antecipada quando a passagem não troca (GREEN)
+e011bc8 2026-11-20 test(carrinho): R1 carrinho novo deve ter total zero (RED)
+5431ab2 2026-11-20 feat(carrinho): R1 getTotal() retorna zero (GREEN)
+0f882ed 2026-11-20 test(carrinho): R2 adicionar um produto soma seu preço (RED)
+6369515 2026-11-20 feat(carrinho): R2 adicionar(Produto) registra o preço (GREEN)
+f9161fd 2026-11-20 test(carrinho): R3 total deve somar vários produtos (RED)
+76d4c8a 2026-11-20 feat(carrinho): R3 acumula o preço de vários produtos (GREEN)
+48de65d 2026-11-20 test(carrinho): R4 remover produto, inexistente, vazio e ocorrência única (RED)
+d7f13c3 2026-11-20 feat(carrinho): R4 remover(Produto) e getQuantidadeItens() (GREEN)
+3381046 2026-11-20 test(carrinho): R5 preço negativo e produto null rejeitados; zero válido (RED)
+72022f1 2026-11-20 feat(carrinho): R5 valida produto null e preço negativo (GREEN)
+8f541e3 2026-11-20 refactor(carrinho): extrai validação do produto para validar()
+41a2b48 2026-11-20 test(carrinho): R6 desconto de 10% a partir de R$ 500,00 (RED)
+5cfa8a2 2026-11-20 feat(carrinho): R6 getSubtotal(), getDesconto() e total com desconto (GREEN)
+9b8e0e2 2026-11-20 refactor(carrinho): constantes nomeadas para fronteira (500,00) e percentual (10%)
+656cba9 2026-11-20 test(carrinho): getProdutos() em ordem de inclusão e imutável (RED)
+98ee6a6 2026-11-20 feat(carrinho): getProdutos() devolve visão imutável da lista (GREEN)
+b45b717 2026-11-20 test(carrinho): verifica nomes na listagem (cobre Produto.getNome)
+b218ed3 2026-11-20 feat(conta): depositar() soma o valor ao saldo (ciclo 1 GREEN)
+e760051 2026-11-20 feat(conta): sacar() subtrai o valor (ciclo 2, regressão detectada)
+277289e 2026-11-20 fix(conta): saque maior que o saldo é ignorado (ciclo 2 GREEN)
+f4cf5a8 2026-11-20 test(conta): valores não positivos, fronteira do saque e sequências (RED)
+df9edf0 2026-11-20 feat(conta): ignora depósito e saque com valor não positivo (GREEN)
+4871698 2026-11-20 feat(estoque): adicionarEstoque() soma a quantidade (ciclo 1, regressão detectada)
+62451e4 2026-11-20 fix(estoque): R6 ignora entrada negativa ou zero (ciclo 1 GREEN)
+503a241 2026-11-20 feat(estoque): retirarEstoque() subtrai a quantidade (ciclo 2, regressão detectada)
+6ebb2f3 2026-11-20 fix(estoque): R5 retirada maior que o estoque é ignorada (ciclo 2 GREEN)
+9702ad8 2026-11-20 test(estoque): getNome, zero, fronteiras de entrada/retirada e intercalação (RED)
+c652ff9 2026-11-20 feat(estoque): ignora retirada não positiva (GREEN)
+6896de4 2026-11-20 docs(semana10): README com resultados, ciclos TDD, decisões e evidências finais
+3344833 2026-11-20 refactor(estrutura): move as Semanas 10, 11 e 14 para 2-bimestre/
+
+### 1d. Renomeacoes do git mv (3344833) de arquivos Semana 10
+$ git show -M --name-status --format= 3344833 | grep -c '^R100.*semana10'
+69
+
+### 1e. Arquivos tocados por cada commit de ciclo (main = src/main, test = src/test)
+e082267 | src/main=0 src/test=0 | test(semana10): registra RED inicial dos projetos com testes prontos
+338dfa5 | src/main=0 src/test=1 | test(bubblesort): casos adicionais, oráculo e contrato para vetor null (RED)
+9330a9f | src/main=0 src/test=1 | test(bubblesort): especifica parada antecipada por contagem de passagens (RED)
+e011bc8 | src/main=0 src/test=1 | test(carrinho): R1 carrinho novo deve ter total zero (RED)
+0f882ed | src/main=0 src/test=1 | test(carrinho): R2 adicionar um produto soma seu preço (RED)
+f9161fd | src/main=0 src/test=1 | test(carrinho): R3 total deve somar vários produtos (RED)
+48de65d | src/main=0 src/test=1 | test(carrinho): R4 remover produto, inexistente, vazio e ocorrência única (RED)
+3381046 | src/main=0 src/test=1 | test(carrinho): R5 preço negativo e produto null rejeitados; zero válido (RED)
+41a2b48 | src/main=0 src/test=1 | test(carrinho): R6 desconto de 10% a partir de R$ 500,00 (RED)
+656cba9 | src/main=0 src/test=1 | test(carrinho): getProdutos() em ordem de inclusão e imutável (RED)
+9702ad8 | src/main=0 src/test=1 | test(estoque): getNome, zero, fronteiras de entrada/retirada e intercalação (RED)
+f4cf5a8 | src/main=0 src/test=1 | test(conta): valores não positivos, fronteira do saque e sequências (RED)
+e760051 | src/main=1 src/test=0 | feat(conta): sacar() subtrai o valor (ciclo 2, regressão detectada)
+4871698 | src/main=1 src/test=0 | feat(estoque): adicionarEstoque() soma a quantidade (ciclo 1, regressão detectada)
+503a241 | src/main=1 src/test=0 | feat(estoque): retirarEstoque() subtrai a quantidade (ciclo 2, regressão detectada)
+6940236 | src/main=1 src/test=0 | feat(bubblesort): implementa ordenar() com trocas adjacentes (R1-R3 GREEN)
+f04c061 | src/main=1 src/test=0 | feat(bubblesort): ordenar() ignora vetor null (GREEN)
+86bc88d | src/main=1 src/test=0 | feat(bubblesort): parada antecipada quando a passagem não troca (GREEN)
+5431ab2 | src/main=1 src/test=0 | feat(carrinho): R1 getTotal() retorna zero (GREEN)
+6369515 | src/main=1 src/test=0 | feat(carrinho): R2 adicionar(Produto) registra o preço (GREEN)
+76d4c8a | src/main=1 src/test=0 | feat(carrinho): R3 acumula o preço de vários produtos (GREEN)
+d7f13c3 | src/main=1 src/test=0 | feat(carrinho): R4 remover(Produto) e getQuantidadeItens() (GREEN)
+72022f1 | src/main=1 src/test=0 | feat(carrinho): R5 valida produto null e preço negativo (GREEN)
+5cfa8a2 | src/main=1 src/test=0 | feat(carrinho): R6 getSubtotal(), getDesconto() e total com desconto (GREEN)
+98ee6a6 | src/main=1 src/test=0 | feat(carrinho): getProdutos() devolve visão imutável da lista (GREEN)
+b218ed3 | src/main=1 src/test=0 | feat(conta): depositar() soma o valor ao saldo (ciclo 1 GREEN)
+277289e | src/main=1 src/test=0 | fix(conta): saque maior que o saldo é ignorado (ciclo 2 GREEN)
+df9edf0 | src/main=1 src/test=0 | feat(conta): ignora depósito e saque com valor não positivo (GREEN)
+62451e4 | src/main=1 src/test=0 | fix(estoque): R6 ignora entrada negativa ou zero (ciclo 1 GREEN)
+6ebb2f3 | src/main=1 src/test=0 | fix(estoque): R5 retirada maior que o estoque é ignorada (ciclo 2 GREEN)
+c652ff9 | src/main=1 src/test=0 | feat(estoque): ignora retirada não positiva (GREEN)
+
+### 1f. Tabela projeto | ciclo | commit RED | commit GREEN | ordem OK?
+Projeto            | Ciclo / requisito          | Commit RED                                        | Commit GREEN                  | Ordem OK?
+bubblesort-tdd     | 0-1 (R1-R3, testes prof.)  | e082267 (RED inicial, so evidencia)               | 6940236 feat                  | SIM
+bubblesort-tdd     | 1 refactor                 | -                                                 | d576e52 refactor (apos GREEN) | SIM
+bubblesort-tdd     | 2 vetor null               | 338dfa5 test (RED)                                | f04c061 feat (GREEN)          | SIM
+bubblesort-tdd     | 3 parada antecipada        | 9330a9f test (RED)                                | 86bc88d feat (GREEN)          | SIM
+carrinho-compras   | R1 total zero              | e011bc8 test (RED)                                | 5431ab2 feat (GREEN)          | SIM
+carrinho-compras   | R2 adicionar               | 0f882ed test (RED)                                | 6369515 feat (GREEN)          | SIM
+carrinho-compras   | R3 somar                   | f9161fd test (RED)                                | 76d4c8a feat (GREEN)          | SIM
+carrinho-compras   | R4 remover                 | 48de65d test (RED)                                | d7f13c3 feat (GREEN)          | SIM
+carrinho-compras   | R5 validacao               | 3381046 test (RED)                                | 72022f1 feat (GREEN)          | SIM (refactor 8f541e3 depois)
+carrinho-compras   | R6 desconto                | 41a2b48 test (RED)                                | 5cfa8a2 feat (GREEN)          | SIM (refactor 9b8e0e2 depois)
+carrinho-compras   | ciclo 7 getProdutos        | 656cba9 test (RED)                                | 98ee6a6 feat (GREEN)          | SIM
+conta-bancaria     | ciclo 0-1 deposito         | e082267 (RED inicial, so evidencia)               | b218ed3 feat (GREEN)          | SIM
+conta-bancaria     | ciclo 2 saque              | e760051 feat (RED de regressao, sem prefixo test) | 277289e fix (GREEN)           | SIM pela ordem; rotulo divergente
+conta-bancaria     | ciclo 3 nao positivos      | f4cf5a8 test (RED)                                | df9edf0 feat (GREEN)          | SIM
+estoque            | ciclo 0                    | e082267 (RED inicial, so evidencia)               | 62451e4 fix (ciclo 1 GREEN)   | SIM (ver ciclo 1)
+estoque            | ciclo 1 adicionar          | 4871698 feat (RED de regressao, sem prefixo test) | 62451e4 fix (GREEN)           | SIM pela ordem; rotulo divergente
+estoque            | ciclo 2 retirar            | 503a241 feat (RED de regressao, sem prefixo test) | 6ebb2f3 fix (GREEN)           | SIM pela ordem; rotulo divergente
+estoque            | ciclo 3 nao positivos      | 9702ad8 test (RED)                                | c652ff9 feat (GREEN)          | SIM
+
+## TAREFA 2 - Evidencias RED, GREEN e REFACTOR
+
+### 2a. Arquivos *-red.txt: grep -E 'BUILD FAILURE|Tests run:.*Failures: [1-9]|COMPILATION ERROR|cannot find symbol'
+$ grep -cE '<padrao>' bubblesort-tdd-ciclo0-red.txt
+3 linhas casam; primeiras:
+[ERROR] Tests run: 3, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.240 s <<< FAILURE! -- in br.edu.exemplo.BubbleSortTest
+[ERROR] Tests run: 3, Failures: 2, Errors: 0, Skipped: 0
+
+$ grep -cE '<padrao>' bubblesort-tdd-ciclo2-red.txt
+3 linhas casam; primeiras:
+[ERROR] Tests run: 13, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.483 s <<< FAILURE! -- in br.edu.exemplo.BubbleSortCasosAdicionaisTest
+[ERROR] Tests run: 16, Failures: 1, Errors: 0, Skipped: 0
+
+$ grep -cE '<padrao>' bubblesort-tdd-ciclo3-red.txt
+8 linhas casam; primeiras:
+[ERROR] COMPILATION ERROR : 
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/bubblesort-tdd/src/test/java/br/edu/exemplo/BubbleSortParadaAntecipadaTest.java:[49,43] cannot find symbol
+
+$ grep -cE '<padrao>' carrinho-compras-tdd-ciclo1-red.txt
+4 linhas casam; primeiras:
+[ERROR] COMPILATION ERROR : 
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[33,32] cannot find symbol
+
+$ grep -cE '<padrao>' carrinho-compras-tdd-ciclo2-red.txt
+4 linhas casam; primeiras:
+[ERROR] COMPILATION ERROR : 
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[49,17] cannot find symbol
+
+$ grep -cE '<padrao>' carrinho-compras-tdd-ciclo3-red.txt
+3 linhas casam; primeiras:
+[ERROR] Tests run: 4, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.209 s <<< FAILURE! -- in br.edu.exemplo.CarrinhoTest
+[ERROR] Tests run: 4, Failures: 2, Errors: 0, Skipped: 0
+
+$ grep -cE '<padrao>' carrinho-compras-tdd-ciclo4-red.txt
+24 linhas casam; primeiras:
+[ERROR] COMPILATION ERROR : 
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[100,36] cannot find symbol
+
+$ grep -cE '<padrao>' carrinho-compras-tdd-ciclo5-red.txt
+3 linhas casam; primeiras:
+[ERROR] Tests run: 16, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0.324 s <<< FAILURE! -- in br.edu.exemplo.CarrinhoTest
+[ERROR] Tests run: 16, Failures: 5, Errors: 0, Skipped: 0
+
+$ grep -cE '<padrao>' carrinho-compras-tdd-ciclo6-red.txt
+22 linhas casam; primeiras:
+[ERROR] COMPILATION ERROR : 
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[267,38] cannot find symbol
+
+$ grep -cE '<padrao>' carrinho-compras-tdd-ciclo7-red.txt
+6 linhas casam; primeiras:
+[ERROR] COMPILATION ERROR : 
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[359,42] cannot find symbol
+
+$ grep -cE '<padrao>' conta-bancaria-tdd-maven-ciclo0-red.txt
+3 linhas casam; primeiras:
+[ERROR] Tests run: 4, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.173 s <<< FAILURE! -- in br.edu.exemplo.ContaBancariaTest
+[ERROR] Tests run: 4, Failures: 4, Errors: 0, Skipped: 0
+
+$ grep -cE '<padrao>' conta-bancaria-tdd-maven-ciclo2-red.txt
+3 linhas casam; primeiras:
+[ERROR] Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.512 s <<< FAILURE! -- in br.edu.exemplo.ContaBancariaTest
+[ERROR] Tests run: 4, Failures: 1, Errors: 0, Skipped: 0
+
+$ grep -cE '<padrao>' conta-bancaria-tdd-maven-ciclo3-red.txt
+3 linhas casam; primeiras:
+[ERROR] Tests run: 13, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0.795 s <<< FAILURE! -- in br.edu.exemplo.ContaBancariaCasosAdicionaisTest
+[ERROR] Tests run: 17, Failures: 5, Errors: 0, Skipped: 0
+
+$ grep -cE '<padrao>' estoque-tdd-ciclo0-red.txt
+3 linhas casam; primeiras:
+[ERROR] Tests run: 6, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.171 s <<< FAILURE! -- in br.edu.exemplo.ProdutoTest
+[ERROR] Tests run: 6, Failures: 4, Errors: 0, Skipped: 0
+
+$ grep -cE '<padrao>' estoque-tdd-ciclo1-red.txt
+3 linhas casam; primeiras:
+[ERROR] Tests run: 6, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.206 s <<< FAILURE! -- in br.edu.exemplo.ProdutoTest
+[ERROR] Tests run: 6, Failures: 2, Errors: 0, Skipped: 0
+
+$ grep -cE '<padrao>' estoque-tdd-ciclo2-red.txt
+3 linhas casam; primeiras:
+[ERROR] Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.149 s <<< FAILURE! -- in br.edu.exemplo.ProdutoTest
+[ERROR] Tests run: 6, Failures: 1, Errors: 0, Skipped: 0
+
+$ grep -cE '<padrao>' estoque-tdd-ciclo3-red.txt
+3 linhas casam; primeiras:
+[ERROR] Tests run: 13, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.385 s <<< FAILURE! -- in br.edu.exemplo.ProdutoCasosAdicionaisTest
+[ERROR] Tests run: 19, Failures: 3, Errors: 0, Skipped: 0
+
+### 2b. Arquivos *-green.txt e *-refactor.txt: resultado do build
+bubblesort-tdd-ciclo1-green.txt | BUILD SUCCESS | [INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
+bubblesort-tdd-ciclo2-green.txt | BUILD SUCCESS | [INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 0
+bubblesort-tdd-ciclo3-green.txt | BUILD SUCCESS | [INFO] Tests run: 25, Failures: 0, Errors: 0, Skipped: 0
+carrinho-compras-tdd-ciclo1-green.txt | BUILD SUCCESS | [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+carrinho-compras-tdd-ciclo2-green.txt | BUILD SUCCESS | [INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+carrinho-compras-tdd-ciclo3-green.txt | BUILD SUCCESS | [INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+carrinho-compras-tdd-ciclo4-green.txt | BUILD SUCCESS | [INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0
+carrinho-compras-tdd-ciclo5-green.txt | BUILD SUCCESS | [INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 0
+carrinho-compras-tdd-ciclo6-green.txt | BUILD SUCCESS | [INFO] Tests run: 24, Failures: 0, Errors: 0, Skipped: 0
+carrinho-compras-tdd-ciclo7-green.txt | BUILD SUCCESS | [INFO] Tests run: 26, Failures: 0, Errors: 0, Skipped: 0
+conta-bancaria-tdd-maven-ciclo1-green.txt | BUILD FAILURE | [ERROR] Tests run: 4, Failures: 1, Errors: 0, Skipped: 0
+conta-bancaria-tdd-maven-ciclo2-green.txt | BUILD SUCCESS | [INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+conta-bancaria-tdd-maven-ciclo3-green.txt | BUILD SUCCESS | [INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0
+estoque-tdd-ciclo1-green.txt | BUILD FAILURE | [ERROR] Tests run: 6, Failures: 1, Errors: 0, Skipped: 0
+estoque-tdd-ciclo2-green.txt | BUILD SUCCESS | [INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+estoque-tdd-ciclo3-green.txt | BUILD SUCCESS | [INFO] Tests run: 19, Failures: 0, Errors: 0, Skipped: 0
+bubblesort-tdd-ciclo1-refactor.txt | BUILD SUCCESS | [INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
+carrinho-compras-tdd-ciclo5-refactor.txt | BUILD SUCCESS | [INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 0
+carrinho-compras-tdd-ciclo6-refactor.txt | BUILD SUCCESS | [INFO] Tests run: 24, Failures: 0, Errors: 0, Skipped: 0
+
+### 2c. Conferencia dos fatos citados no README
+$ grep -E '<<< FAILURE|expected' estoque-tdd-ciclo1-red.txt
+[ERROR] br.edu.exemplo.ProdutoTest.deveRetirarProdutoDoEstoque -- Time elapsed: 0.016 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <7> but was: <10>
+[ERROR] br.edu.exemplo.ProdutoTest.naoDeveAdicionarQuantidadeNegativa -- Time elapsed: 0.004 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <0> but was: <-10>
+[ERROR]   ProdutoTest.deveRetirarProdutoDoEstoque:42 expected: <7> but was: <10>
+[ERROR]   ProdutoTest.naoDeveAdicionarQuantidadeNegativa:61 expected: <0> but was: <-10>
+
+$ grep -E '<<< FAILURE' estoque-tdd-ciclo1-green.txt
+[ERROR] br.edu.exemplo.ProdutoTest.deveRetirarProdutoDoEstoque -- Time elapsed: 0.015 s <<< FAILURE!
+
+$ grep -E '<<< FAILURE' conta-bancaria-tdd-maven-ciclo1-green.txt
+[ERROR] br.edu.exemplo.ContaBancariaTest.deveSacarValorDaConta -- Time elapsed: 0.016 s <<< FAILURE!
+
+$ grep -E 'symbol:' bubblesort-tdd-ciclo3-red.txt | sort | uniq -c
+      3   symbol:   method getPassagens()
+      3 [ERROR]   symbol:   method getPassagens()
+
+$ grep -E '<<< FAILURE' bubblesort-tdd-ciclo0-red.txt
+[ERROR] br.edu.exemplo.BubbleSortTest.deveOrdenarVetorDesordenado -- Time elapsed: 0.108 s <<< FAILURE!
+[ERROR] br.edu.exemplo.BubbleSortTest.deveOrdenarVetorComValoresRepetidos -- Time elapsed: 0.004 s <<< FAILURE!
+
+$ grep -E '<<< FAILURE|expected' carrinho-compras-tdd-ciclo3-red.txt
+[ERROR] br.edu.exemplo.CarrinhoTest.r3DeveSomarVariosProdutos -- Time elapsed: 0.071 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <150.0> but was: <50.0>
+[ERROR] br.edu.exemplo.CarrinhoTest.r3DeveSomarValoresComCentavos -- Time elapsed: 0.004 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <0.3> but was: <0.2>
+
+$ grep -E 'NullPointer' bubblesort-tdd-ciclo2-red.txt
+org.opentest4j.AssertionFailedError: Unexpected exception thrown: java.lang.NullPointerException: Cannot read the array length because "this.numeros" is null
+
+$ grep -hE 'symbol:' carrinho-compras-tdd-ciclo1-red.txt carrinho-compras-tdd-ciclo2-red.txt carrinho-compras-tdd-ciclo6-red.txt carrinho-compras-tdd-ciclo7-red.txt | sort | uniq -c
+      1   symbol:   method adicionar(br.edu.exemplo.Produto)
+      5   symbol:   method getDesconto()
+      2   symbol:   method getProdutos()
+      5   symbol:   method getSubtotal()
+      1   symbol:   method getTotal()
+      1 [ERROR]   symbol:   method adicionar(br.edu.exemplo.Produto)
+      5 [ERROR]   symbol:   method getDesconto()
+      2 [ERROR]   symbol:   method getProdutos()
+      5 [ERROR]   symbol:   method getSubtotal()
+      1 [ERROR]   symbol:   method getTotal()
+
+$ grep -c '<<< FAILURE' conta-bancaria-tdd-maven-ciclo3-red.txt estoque-tdd-ciclo0-red.txt
+conta-bancaria-tdd-maven-ciclo3-red.txt:6
+estoque-tdd-ciclo0-red.txt:5
+
+$ grep -oE 'BUILD (FAILURE|SUCCESS)' *final-verify.txt *final-mutacao.txt (ultimo)
+bubblesort-tdd-final-verify.txt | BUILD SUCCESS | [INFO] Tests run: 25, Failures: 0, Errors: 0, Skipped: 0
+carrinho-compras-tdd-final-verify.txt | BUILD SUCCESS | [INFO] Tests run: 26, Failures: 0, Errors: 0, Skipped: 0
+conta-bancaria-tdd-maven-final-verify.txt | BUILD SUCCESS | [INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0
+estoque-tdd-final-verify.txt | BUILD SUCCESS | [INFO] Tests run: 19, Failures: 0, Errors: 0, Skipped: 0
+bubblesort-tdd-final-mutacao.txt | BUILD SUCCESS | [INFO] Tests run: 25, Failures: 0, Errors: 0, Skipped: 0
+carrinho-compras-tdd-final-mutacao.txt | BUILD SUCCESS | [INFO] Tests run: 26, Failures: 0, Errors: 0, Skipped: 0
+conta-bancaria-tdd-maven-final-mutacao.txt | BUILD SUCCESS | [INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0
+estoque-tdd-final-mutacao.txt | BUILD SUCCESS | [INFO] Tests run: 19, Failures: 0, Errors: 0, Skipped: 0
+
+## TAREFA 3 - Historico preservado com git log --follow
+$ git log --follow --oneline -- 2-bimestre/semana10-tdd/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java | tail -3
+0f882ed test(carrinho): R2 adicionar um produto soma seu preço (RED)
+e011bc8 test(carrinho): R1 carrinho novo deve ter total zero (RED)
+a849b02 chore: importa código-base original do professor (Semanas 10, 11 e 14)
+(total com --follow: 10)
+
+$ git log --follow --oneline -- 2-bimestre/semana10-tdd/bubblesort-tdd/src/main/java/br/edu/exemplo/BubbleSort.java | tail -3
+d576e52 refactor(bubblesort): extrai método trocar(i, j)
+6940236 feat(bubblesort): implementa ordenar() com trocas adjacentes (R1-R3 GREEN)
+a849b02 chore: importa código-base original do professor (Semanas 10, 11 e 14)
+(total com --follow: 6)
+
+$ git log --follow --oneline -- 2-bimestre/semana11-integracao-springboot/exercicios_integracao_springboot/src/test/java/br/edu/exemplo/ProdutoServiceIntegrationTest.java | tail -3
+3344833 refactor(estrutura): move as Semanas 10, 11 e 14 para 2-bimestre/
+336920b test(semana11): CT01, CT02 e CT03 em ProdutoServiceIntegrationTest
+a849b02 chore: importa código-base original do professor (Semanas 10, 11 e 14)
+(total com --follow: 3)
+
+$ git log --follow --oneline -- 2-bimestre/semana14-teste-usuario-final/analise/src/main/java/br/edu/exemplo/analise/Main.java | tail -3
+3344833 refactor(estrutura): move as Semanas 10, 11 e 14 para 2-bimestre/
+700a3ce feat(semana14): analisador automatizado e testado do teste de usuário
+(total com --follow: 2)
+
+$ git log --follow --oneline -- 1-bimestre/atividade03-junit-central-pedidos/pom.xml | tail -3
+06d666b refactor(estrutura): move as atividades da Prova 01 para 1-bimestre/
+c5bb0d3 atv6
+(total com --follow: 2)
+
+$ git log --follow --oneline -- 1-bimestre/atividade04-gfc-revisao/ex1.md | tail -3
+06d666b refactor(estrutura): move as atividades da Prova 01 para 1-bimestre/
+04591cb ex1 grafo
+(total com --follow: 2)
+
+## TAREFA 4 - Autoria
+
+$ git shortlog -sne --all
+    61	Felipe Galeti Gôngora <fgaletigongora@gmail.com>
+     5	Nosima <168672132+BrenoNosima@users.noreply.github.com>
+     1	Felipe Galeti <felipe.gongora@liveseo.com.br>
+     1	Henrique <riqueikeda2004@gmail.com>
+     1	Henrique-ikeda <168565276+Henrique-ikeda@users.noreply.github.com>
+     1	Nosima <breno.nosima@gmail.com>
+
+$ git log --format='%an <%ae>' | sort | uniq -c
+      1 Felipe Galeti <felipe.gongora@liveseo.com.br>
+     61 Felipe Galeti Gôngora <fgaletigongora@gmail.com>
+      1 Henrique <riqueikeda2004@gmail.com>
+      1 Henrique-ikeda <168565276+Henrique-ikeda@users.noreply.github.com>
+      5 Nosima <168672132+BrenoNosima@users.noreply.github.com>
+      1 Nosima <breno.nosima@gmail.com>
+
+$ git log --all --format=%B | grep -ci 'co-authored-by'
+0
+
+## CONCLUSAO
+
+Ordem RED antes de GREEN: SIM em todos os ciclos (posicao no --reverse). Commits de regressao (conta ciclo 2, estoque ciclos 1 e 2) quebram a suite de proposito antes do fix.
+Evidencias RED: todas mostram falha real (asercao ou compilacao).
+Evidencias GREEN/REFACTOR: BUILD SUCCESS, exceto conta ciclo1 e estoque ciclo1, que o README documenta como intermediarios com falha de requisito futuro. Coerente.
+
+DIVERGENCIA 1 (README x evidencia): estoque-tdd-ciclo1-red.txt. O README diz que no ciclo 1 RED 'R2 e R3 passam, mas R6 quebra'. A evidencia mostra 2 falhas: naoDeveAdicionarQuantidadeNegativa (esperado 0, obtido -10) e deveRetirarProdutoDoEstoque (esperado 7, obtido 10). A segunda falha (R4) nao esta descrita no README.
+OBSERVACAO 2 (nao reprova): os RED de regressao de conta ciclo 2, estoque ciclo 1 e estoque ciclo 2 estao commitados como feat(...) e nao como test(...) (RED). A ordem RED -> GREEN esta preservada.
+OBSERVACAO 3: as evidencias gravaram caminhos antigos (aulas/SEMANA10/...), gerados antes do git mv.
+OBSERVACAO 4: git log --reverse -- 2-bimestre/semana10-tdd lista so 3 commits, e --follow em diretorio nao segue renomeacoes. O historico TDD esta em aulas/SEMANA10 e aparece com --follow por arquivo (tarefa 3).
+
+Motivo da reprovacao: a divergencia 1 entre README e evidencia (o README omite uma falha documentada na evidencia do estoque ciclo 1 RED). Pelo criterio pedido, 'README coerente com as evidencias' nao se sustenta.
+
+RESULTADO: FALHOU

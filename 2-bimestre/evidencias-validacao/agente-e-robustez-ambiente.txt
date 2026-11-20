@@ -1,0 +1,217 @@
+AGENTE E - ROBUSTEZ DE AMBIENTE (Linux/Windows, sem Maven, repositorio publico)
+Data: 2026-11-20 16:06:24 -0300
+Repositorio: https://github.com/FGaleti/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE (branch develop)
+HEAD testado: 1c937361c90ce989236d565076c468eefce6be49  (1c93736 test(validacao): saida do verificador de links)
+Ambiente: Windows 11 + Git Bash. Java 17 em uso: openjdk 17.0.21.1 (Temurin-17.0.21.1+2) via JAVA_HOME. Maven no PATH: AUSENTE (command -v mvn -> vazio).
+Observacao: existe um Maven instalado em C:/Users/felipe.gongora/.local-tools/apache-maven-3.9.9, mas ele foi deliberadamente excluido do PATH.
+
+=====================================================================
+TAREFA 1 - Repositorio publico, sem login
+=====================================================================
+Comando: GIT_TERMINAL_PROMPT=0 git -c credential.helper= ls-remote https://github.com/FGaleti/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE.git | head
+Saida (exit 0):
+d696469eac1e165416ef6e511cb09e4d7625d39d	HEAD
+1c937361c90ce989236d565076c468eefce6be49	refs/heads/develop
+2596afab86b69f1737bef1295dc3acc0fce03c05	refs/heads/henrique
+d696469eac1e165416ef6e511cb09e4d7625d39d	refs/heads/main
+2596afab86b69f1737bef1295dc3acc0fce03c05	refs/pull/1/head
+
+Comando: curl -s https://api.github.com/repos/FGaleti/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE | grep -E '"(private|visibility|default_branch)"'
+Saida:
+  "private": false,
+  "visibility": "public",
+  "default_branch": "main",
+RESULTADO TAREFA 1: PASSOU
+
+=====================================================================
+TAREFA 2 - Maven Wrapper sem Maven instalado
+=====================================================================
+Clone: git -c core.longpaths=true clone -b develop <url> "/c/Users/FELIPE~1.GON/AppData/Local/Temp/claude/e5588d388707d455/7e642a77-0ace-4c1a-99fa-e1ce40095660/scratchpad/validacao/agente-e/repo"  -> exit 0
+Arquivos do wrapper (7 projetos com pom.xml, todos com mvnw, mvnw.cmd e .mvn/wrapper/maven-wrapper.properties):
+  distributionUrl=https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven-3.9.9/apache-maven-3.9.9-bin.zip  (Maven 3.9.9 em todos)
+
+Comando por projeto: ./mvnw -B -ntp test  (execucao limpa final, logs em /c/Users/FELIPE~1.GON/AppData/Local/Temp/claude/e5588d388707d455/7e642a77-0ace-4c1a-99fa-e1ce40095660/scratchpad/validacao/agente-e/logs/)
+Resumo de saida (exit code = 0 em todos):
+EXIT=0 ./1-bimestre/atividade03-junit-central-pedidos              Tests run: 54, Failures: 0, Errors: 0 -- BUILD SUCCESS
+EXIT=0 ./2-bimestre/semana10-tdd/bubblesort-tdd                    Tests run: 25, Failures: 0, Errors: 0 -- BUILD SUCCESS
+EXIT=0 ./2-bimestre/semana10-tdd/carrinho-compras-tdd              Tests run: 26, Failures: 0, Errors: 0 -- BUILD SUCCESS
+EXIT=0 ./2-bimestre/semana10-tdd/conta-bancaria-tdd-maven          Tests run: 17, Failures: 0, Errors: 0 -- BUILD SUCCESS
+EXIT=0 ./2-bimestre/semana10-tdd/estoque-tdd                       Tests run: 19, Failures: 0, Errors: 0 -- BUILD SUCCESS
+EXIT=0 ./2-bimestre/semana11-integracao-springboot/exercicios_integracao_springboot  Tests run: 34, Failures: 0, Errors: 0 -- BUILD SUCCESS
+EXIT=0 ./2-bimestre/semana14-teste-usuario-final/analise           Tests run: 82, Failures: 0, Errors: 0 -- BUILD SUCCESS
+Total: 257 testes, 0 falhas, 0 erros.
+
+Comando: ./mvnw -v | head -1  ->  Apache Maven 3.9.9 (8e8579a9e76f7d015ee5ec7bfcdc97d260186937)
+
+Teste via cmd (projeto atividade03-junit-central-pedidos):
+  cmd /c "cd /d <caminho> && .\mvnw.cmd -B -ntp -q test && echo CMD_OK"  -> saida "CMD_OK", exit 0
+  Observacao: 'mvnw.cmd' sem '.\' nao foi encontrado pelo cmd deste ambiente (busca no diretorio atual desativada); com '.\' executou.
+  Observacao: -q oculta o resumo de testes; a evidencia e CMD_OK + exit 0.
+RESULTADO TAREFA 2: PASSOU
+
+Nota de execucao: uma primeira tentativa de rodar em segundo plano parou apos o primeiro projeto; os logs foram refeitos
+em uma execucao limpa e sequencial. Um processo Maven de outra sessao (diretorio agente-a) estava ativo durante a
+validacao; nao foi tocado.
+
+=====================================================================
+TAREFA 3 - Fins de linha, modos e artefatos
+=====================================================================
+Comando: cat .gitattributes
+# Normaliza fins de linha no repositório (LF), independentemente do SO de quem commita.
+* text=auto
+
+# Scripts de shell e Maven Wrapper (Unix) sempre com LF, para rodar em Linux/macOS/Git Bash.
+*.sh   text eol=lf
+mvnw   text eol=lf
+
+# Scripts Windows sempre com CRLF.
+*.cmd  text eol=crlf
+*.bat  text eol=crlf
+
+# Código e dados em texto
+*.java text
+*.xml  text
+*.md   text
+*.csv  text
+*.yml  text
+*.properties text
+
+# Binários
+*.pdf  binary
+*.docx binary
+*.png  binary
+*.jpg  binary
+*.jar  binary
+
+Comando: git ls-files --eol | grep -E 'mvnw|\.cmd$|\.sh$'
+i/lf    w/lf    attr/text eol=lf      	1-bimestre/atividade03-junit-central-pedidos/mvnw
+i/lf    w/crlf  attr/text eol=crlf    	1-bimestre/atividade03-junit-central-pedidos/mvnw.cmd
+i/lf    w/lf    attr/text eol=lf      	2-bimestre/semana10-tdd/bubblesort-tdd/mvnw
+i/lf    w/crlf  attr/text eol=crlf    	2-bimestre/semana10-tdd/bubblesort-tdd/mvnw.cmd
+i/lf    w/lf    attr/text eol=lf      	2-bimestre/semana10-tdd/carrinho-compras-tdd/mvnw
+i/lf    w/crlf  attr/text eol=crlf    	2-bimestre/semana10-tdd/carrinho-compras-tdd/mvnw.cmd
+i/lf    w/lf    attr/text eol=lf      	2-bimestre/semana10-tdd/conta-bancaria-tdd-maven/mvnw
+i/lf    w/crlf  attr/text eol=crlf    	2-bimestre/semana10-tdd/conta-bancaria-tdd-maven/mvnw.cmd
+i/lf    w/lf    attr/text eol=lf      	2-bimestre/semana10-tdd/estoque-tdd/mvnw
+i/lf    w/crlf  attr/text eol=crlf    	2-bimestre/semana10-tdd/estoque-tdd/mvnw.cmd
+i/lf    w/lf    attr/text eol=lf      	2-bimestre/semana11-integracao-springboot/exercicios_integracao_springboot/mvnw
+i/lf    w/crlf  attr/text eol=crlf    	2-bimestre/semana11-integracao-springboot/exercicios_integracao_springboot/mvnw.cmd
+i/lf    w/lf    attr/text eol=lf      	2-bimestre/semana14-teste-usuario-final/analise/mvnw
+i/lf    w/crlf  attr/text eol=crlf    	2-bimestre/semana14-teste-usuario-final/analise/mvnw.cmd
+i/lf    w/lf    attr/text eol=lf      	scripts/verificar-links.sh
+
+Comando: git check-attr eol (mvnw/.cmd/.sh)
+1-bimestre/atividade03-junit-central-pedidos/mvnw: eol: lf
+1-bimestre/atividade03-junit-central-pedidos/mvnw.cmd: eol: crlf
+2-bimestre/semana10-tdd/bubblesort-tdd/mvnw: eol: lf
+2-bimestre/semana10-tdd/bubblesort-tdd/mvnw.cmd: eol: crlf
+2-bimestre/semana10-tdd/carrinho-compras-tdd/mvnw: eol: lf
+2-bimestre/semana10-tdd/carrinho-compras-tdd/mvnw.cmd: eol: crlf
+2-bimestre/semana10-tdd/conta-bancaria-tdd-maven/mvnw: eol: lf
+2-bimestre/semana10-tdd/conta-bancaria-tdd-maven/mvnw.cmd: eol: crlf
+2-bimestre/semana10-tdd/estoque-tdd/mvnw: eol: lf
+2-bimestre/semana10-tdd/estoque-tdd/mvnw.cmd: eol: crlf
+2-bimestre/semana11-integracao-springboot/exercicios_integracao_springboot/mvnw: eol: lf
+2-bimestre/semana11-integracao-springboot/exercicios_integracao_springboot/mvnw.cmd: eol: crlf
+2-bimestre/semana14-teste-usuario-final/analise/mvnw: eol: lf
+2-bimestre/semana14-teste-usuario-final/analise/mvnw.cmd: eol: crlf
+scripts/verificar-links.sh: eol: lf
+
+Comando: git ls-files -s | grep -E 'mvnw$|\.sh$'
+100755 19529ddf8c6eaa08c5c75ff80652d21ce4b72f8c 0	1-bimestre/atividade03-junit-central-pedidos/mvnw
+100755 19529ddf8c6eaa08c5c75ff80652d21ce4b72f8c 0	2-bimestre/semana10-tdd/bubblesort-tdd/mvnw
+100755 19529ddf8c6eaa08c5c75ff80652d21ce4b72f8c 0	2-bimestre/semana10-tdd/carrinho-compras-tdd/mvnw
+100755 19529ddf8c6eaa08c5c75ff80652d21ce4b72f8c 0	2-bimestre/semana10-tdd/conta-bancaria-tdd-maven/mvnw
+100755 19529ddf8c6eaa08c5c75ff80652d21ce4b72f8c 0	2-bimestre/semana10-tdd/estoque-tdd/mvnw
+100755 19529ddf8c6eaa08c5c75ff80652d21ce4b72f8c 0	2-bimestre/semana11-integracao-springboot/exercicios_integracao_springboot/mvnw
+100755 19529ddf8c6eaa08c5c75ff80652d21ce4b72f8c 0	2-bimestre/semana14-teste-usuario-final/analise/mvnw
+100755 d56170f40a8e9edb09acf52d151d668bd6bbfc51 0	scripts/verificar-links.sh
+
+Comando: cat .gitignore
+# Saídas de build (Maven)
+target/
+**/target/
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+.factorypath
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Diversos
+*.log
+.Rhistory
+
+Comando: git ls-files | grep -E '(^|/)target/|\.idea/|\.iml$|\.DS_Store'  -> saida vazia (grep exit 1)
+RESULTADO TAREFA 3: PASSOU
+Observacao: 'git ls-files --eol' emitiu avisos "Filename too long" para arquivos dentro de
+semana11/.../src/main/java/br/edu/exemplo/*, por causa do comprimento do caminho absoluto deste diretorio de
+trabalho (core.longpaths so foi aplicado ao clone). Nao e problema do repositorio: o .gitattributes rastreado e
+apenas o da raiz.
+
+=====================================================================
+TAREFA 4 - CI em Linux e Windows (GitHub Actions, branch develop)
+=====================================================================
+Comando: curl -s ".../actions/runs?branch=develop&per_page=1"
+Run mais recente: id 44796992654, name "testes", event push, head_sha 1c937361c90ce989236d565076c468eefce6be49
+  (igual ao HEAD local), status "completed", conclusion "failure".
+Comando: curl -s ".../actions/runs/44796992654/jobs?per_page=50"  (total_count: 18)
+
+Jobs (conclusion | name):
+      "conclusion": "success",	      "name": "mutação PIT (estoque-tdd)",
+      "conclusion": "success",	      "name": "verify (central-pedidos, windows-latest)",
+      "conclusion": "success",	      "name": "mutação PIT (conta-bancaria-tdd-maven)",
+      "conclusion": "failure",	      "name": "verify (estoque-tdd, ubuntu-latest)",
+      "conclusion": "success",	      "name": "mutação PIT (bubblesort-tdd)",
+      "conclusion": "success",	      "name": "verify (carrinho-compras-tdd, ubuntu-latest)",
+      "conclusion": "success",	      "name": "verify (analise-teste-usuario, ubuntu-latest)",
+      "conclusion": "success",	      "name": "mutação PIT (carrinho-compras-tdd)",
+      "conclusion": "success",	      "name": "verify (central-pedidos, ubuntu-latest)",
+      "conclusion": "success",	      "name": "verify (estoque-tdd, windows-latest)",
+      "conclusion": "success",	      "name": "verify (bubblesort-tdd, ubuntu-latest)",
+      "conclusion": "success",	      "name": "verify (carrinho-compras-tdd, windows-latest)",
+      "conclusion": "success",	      "name": "verify (analise-teste-usuario, windows-latest)",
+      "conclusion": "success",	      "name": "verify (exercicios_integracao_springboot, windows-latest)",
+      "conclusion": "success",	      "name": "verify (conta-bancaria-tdd-maven, windows-latest)",
+      "conclusion": "success",	      "name": "verify (bubblesort-tdd, windows-latest)",
+      "conclusion": "success",	      "name": "verify (conta-bancaria-tdd-maven, ubuntu-latest)",
+      "conclusion": "success",	      "name": "verify (exercicios_integracao_springboot, ubuntu-latest)",
+
+Job com falha: verify (estoque-tdd, ubuntu-latest), job id 136498993916 (check-run 136498993916).
+Passos: 'Set up job' ok, checkout ok, Java 17 ok, './mvnw verify (Maven Wrapper 3.9.9; testes + checagem de cobertura)' FAILURE, publicacao de relatorios ok (sem arquivos).
+Tentativa de log: curl -sL .../actions/jobs/136498993916/logs -> HTTP 403 {"message": "Must have admin rights to Repository."}  (log exige admin; nao baixado).
+Anotacoes do check-run (GET .../check-runs/136498993916/annotations), trechos reais:
+  "annotation_level": "warning",
+  "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-java@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/",
+  "annotation_level": "warning",
+  "message": "No files were found with the provided path: 2-bimestre/semana10-tdd/estoque-tdd/target/site/jacoco/\n2-bimestre/semana10-tdd/estoque-tdd/target/surefire-reports/. No artifacts will be uploaded.",
+  "annotation_level": "failure",
+  "message": "Process completed with exit code 1.",
+  "annotation_level": "warning",
+  "message": "setup-java v4 is deprecated and will no longer receive updates. Please migrate to actions/setup-java@v5.",
+Historico: run anterior dd7588b (44796965894, 18:53:12Z) teve verify (estoque-tdd, ubuntu-latest) = success. Ultimo commit 1c93736 so adiciona 2-bimestre/evidencias-validacao/links.txt (130 linhas), sem codigo Maven. Causa exata nao verificavel sem o log.
+Windows do mesmo projeto (verify (estoque-tdd, windows-latest)) = success nesse run; os 7 Maven localmente passaram.
+Verificacao de termino: status ja era 'completed' na primeira consulta; nao foi necessario sleep.
+
+RESULTADO TAREFA 4: FALHOU (verify (estoque-tdd, ubuntu-latest) = failure; logs indisponiveis sem admin).
+
+=====================================================================
+RESUMO FINAL
+- Tarefa 1 (publico, sem login): PASSOU
+- Tarefa 2 (mvnw test sem Maven, 7 projetos, 257 testes, cmd OK): PASSOU
+- Tarefa 3 (atributos, modos, artefatos): PASSOU
+- Tarefa 4 (CI verify ubuntu e windows com success): FALHOU (1 job ubuntu falhou: estoque-tdd)
+
+Motivos do FALHOU:
+  1. CI do commit 1c93736: verify (estoque-tdd, ubuntu-latest) conclusion=failure; os demais verify passaram.
+     Causa nao identificada: log exige permissao de admin (403).
+
+RESULTADO: FALHOU
