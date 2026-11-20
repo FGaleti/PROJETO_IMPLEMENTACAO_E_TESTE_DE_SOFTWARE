@@ -84,3 +84,5 @@ Convenção: `Classe#método`. Testes do professor marcados com **(prof.)**. Os 
 | 8. Papéis e ferramentas (inclui formulário SUS) | `01` §8; `04-questionario-sus.csv/.md`; `CalculadoraSusTest` (50 / 100 / 0) | Pronto |
 | 9. Planilha de observação (colunas do modelo) | `03-planilha-observacao.csv` (colunas exatas + `participante`, `com_ajuda`) | Pronto |
 | Executar o teste com usuários | Sessões reais (≥ 5) | ⏳ **Pendente**, depende da equipe |
+| (complemento) Avaliação de especialista | [07-avaliacao-heuristica.md](2-bimestre/semana14-teste-usuario-final/07-avaliacao-heuristica.md) | Pronto (hipóteses a confirmar) |
+| (complemento) Demonstração do processo de análise | [simulacao/](2-bimestre/semana14-teste-usuario-final/simulacao/LEIA-ME.md) e [DEMONSTRACAO-SIMULADA.txt](2-bimestre/semana14-teste-usuario-final/evidencias/DEMONSTRACAO-SIMULADA.txt) | Pronto; **dados simulados, rotulados, não são resultado** |
