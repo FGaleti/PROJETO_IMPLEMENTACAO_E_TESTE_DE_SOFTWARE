@@ -33,7 +33,7 @@
 \* Os mutantes sobreviventes são equivalentes e estão justificados em [2-bimestre/semana10-tdd/README.md](2-bimestre/semana10-tdd/README.md#resultados).
 
 - **Rastreabilidade** (requisito → teste → evidência): [RASTREABILIDADE.md](RASTREABILIDADE.md)
-- **Validação independente** (simulação de scripts de correção): [2-bimestre/evidencias-validacao/](2-bimestre/evidencias-validacao/)
+- **Validação independente** (clone limpo, testes originais do professor, Linux e Windows, histórico TDD): [2-bimestre/evidencias-validacao/](2-bimestre/evidencias-validacao/)
 
 ## Como executar
 

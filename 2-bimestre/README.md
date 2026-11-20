@@ -9,4 +9,4 @@ Enunciado oficial: *"Todas as soluções em um único projeto no GitHub"*, com a
 | 11: integração | [semana11-integracao-springboot/](semana11-integracao-springboot/README.md) | [exercicios_integracao_springboot](semana11-integracao-springboot/exercicios_integracao_springboot/README.md) | 34 | ✅ |
 | 14: usuário final | [semana14-teste-usuario-final/](semana14-teste-usuario-final/README.md) | Plano, roteiro, [kit rápido](semana14-teste-usuario-final/KIT-SESSAO-RAPIDA.md), planilha, SUS, [relatório](semana14-teste-usuario-final/06-relatorio-final.md), [analisador](semana14-teste-usuario-final/analise/) | 82 | ⏳ sessões reais pendentes |
 
-Validação independente da entrega (simulação de scripts de correção): [evidencias-validacao/](evidencias-validacao/).
+Validação independente da entrega (clone limpo, testes originais do professor, Linux e Windows, histórico TDD): [evidencias-validacao/](evidencias-validacao/).

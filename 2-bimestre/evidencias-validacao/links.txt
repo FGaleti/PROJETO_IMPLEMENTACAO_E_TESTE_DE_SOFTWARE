@@ -102,9 +102,12 @@ OK        2-bimestre/semana14-teste-usuario-final/README.md -> KIT-SESSAO-RAPIDA
 OK        2-bimestre/semana14-teste-usuario-final/README.md -> 04b-sus-google-forms.txt
 OK        2-bimestre/semana14-teste-usuario-final/README.md -> 03b-planilha-simplificada.csv
 OK        2-bimestre/semana14-teste-usuario-final/README.md -> analise/
+OK        2-bimestre/semana14-teste-usuario-final/README.md -> evidencias/analise-verify.txt
 OK        RASTREABILIDADE.md -> 2-bimestre/semana10-tdd/evidencias/
 OK        RASTREABILIDADE.md -> 2-bimestre/semana11-integracao-springboot/exercicios_integracao_springboot/evidencias/
 OK        RASTREABILIDADE.md -> 2-bimestre/semana14-teste-usuario-final/
+OK        RASTREABILIDADE.md -> 2-bimestre/evidencias-validacao/agente-b-testes-do-professor.txt
+OK        RASTREABILIDADE.md -> 2-bimestre/evidencias-validacao/agente-b-testes-do-professor.txt
 OK        README.md -> 1-bimestre/README.md
 OK        README.md -> 2-bimestre/README.md
 OK        README.md -> 2-bimestre/semana10-tdd/bubblesort-tdd/
@@ -126,5 +129,5 @@ OK        README.md -> RASTREABILIDADE.md
 OK        README.md -> 2-bimestre/evidencias-validacao/
 OK        README.md -> .github/workflows/testes.yml
 
-Links relativos verificados: 127 | quebrados: 0
+Links relativos verificados: 130 | quebrados: 0
 RESULTADO: PASSOU

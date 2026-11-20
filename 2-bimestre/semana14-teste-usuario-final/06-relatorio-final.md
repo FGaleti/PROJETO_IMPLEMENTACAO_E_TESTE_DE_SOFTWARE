@@ -2,7 +2,7 @@
 
 > **Situação: PENDENTE DE COLETA.** As sessões com participantes reais ainda não foram feitas.
 > As seções marcadas com ⏳ só serão preenchidas com os números calculados pelo analisador
-> (`analise/`, saída em `evidencias/analise.txt`). **Nenhum número deste relatório pode ser estimado ou inventado.**
+> (`analise/`, saída em `evidencias/analise.txt`, arquivo que será gerado após a coleta). **Nenhum número deste relatório pode ser estimado ou inventado.**
 
 ## 1. Resumo executivo ⏳
 

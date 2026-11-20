@@ -43,7 +43,7 @@ Evidências: `evidencias/<projeto>-final-verify.txt` e `evidencias/<projeto>-fin
 Nenhum teste observável consegue distinguir esses mutantes do original. Seria preciso mudar a assinatura `void` dos métodos do professor
 (por exemplo, para retornar `boolean`), e isso não é permitido. Os testes de valor zero existem e documentam a regra
 (R6 do estoque diz *"negativa ou igual a zero"*), mas o comportamento é o mesmo. O limiar do profile `mutacao`
-nesses dois `pom.xml` foi fixado no valor alcançado (83 e 84). Se um teste regredir, o build falha.
+nesses dois `pom.xml` foi fixado no valor alcançado (83 e 84) **por causa desses 4 mutantes equivalentes**, e não por falta de teste. Se um teste regredir, o build falha.
 
 ## Ciclos TDD e evidências
 
@@ -103,7 +103,9 @@ O teste de listagem passou a conferir os nomes dos produtos (commit `test(carrin
 
 ## Decisões de projeto
 
-### Carrinho, R5: ignorar ou lançar exceção? (resposta à "discussão com o professor")
+### Carrinho, R5: ignorar ou lançar exceção?
+
+O `REQUISITOS.md` deixa a escolha para "discussão com o professor". Abaixo está a decisão da equipe, com a justificativa.
 
 Decidimos **lançar `IllegalArgumentException`**, e o carrinho **permanece inalterado**.
 

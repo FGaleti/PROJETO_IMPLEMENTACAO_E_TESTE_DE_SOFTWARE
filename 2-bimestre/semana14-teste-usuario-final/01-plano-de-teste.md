@@ -83,7 +83,7 @@ Todas as métricas são calculadas pelo analisador automatizado ([analise/](anal
 | Papel | Quem | Responsabilidade |
 |---|---|---|
 | Usuário final | Colega participante | Executar as tarefas como comprador, pensando em voz alta |
-| Avaliador | Integrante da equipe | Conduzir a sessão pelo roteiro, cronometrar e registrar tempos, erros e comentários. Não induzir o participante |
+| Avaliador | Colega (integrante da equipe ou outro aluno da turma) | Conduzir a sessão pelo roteiro, cronometrar e registrar tempos, erros e comentários. Não induzir o participante |
 | Instrutor | Prof. João Choma | Orientar e supervisionar a atividade |
 
 **Ferramentas:** navegador (Chrome, Firefox ou Edge) em janela anônima; cronômetro do celular; planilha de observação (este CSV, em papel ou no Google Planilhas);

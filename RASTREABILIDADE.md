@@ -15,7 +15,7 @@ Convenção: `Classe#método`. Testes do professor marcados com **(prof.)**. Os 
 | R2: manter vetor já ordenado | `BubbleSortTest#deveManterVetorJaOrdenado` **(prof.)**; partições "dois já ordenados", "um elemento", "vazio"; `BubbleSortParadaAntecipadaTest` (já ordenado faz 1 passagem) | `ciclo1-green.txt`, `ciclo3-green.txt` |
 | R3: valores repetidos `[3,1,3,2,1]` | `BubbleSortTest#deveOrdenarVetorComValoresRepetidos` **(prof.)**; partição "todos iguais"; oráculo (valores −100..100 forçam repetição) | `ciclo1-green.txt` |
 | Algoritmo **Bubble Sort** (trocas adjacentes) | `BubbleSortParadaAntecipadaTest#deveExecutarSomenteAsPassagensNecessarias` (decrescente faz n−1 passagens) | `ciclo3-green.txt` |
-| Restrição: não alterar os testes fornecidos | `git diff` do `BubbleSortTest.java` contra o commit-base é vazio | Seção "Verificação final" do PR |
+| Restrição: não alterar os testes fornecidos | `git diff` do `BubbleSortTest.java` contra o commit-base é vazio | [agente-b-testes-do-professor.txt](2-bimestre/evidencias-validacao/agente-b-testes-do-professor.txt) (testes do professor copiados por cima: idênticos e 100% verdes) |
 | Extra: `null`, in-place, parada antecipada | `#deveIgnorarVetorNulo`, `#deveOrdenarNoProprioVetor`, `BubbleSortParadaAntecipadaTest` (7 + 2) | `ciclo2-red/green.txt`, `ciclo3-red/green.txt` |
 | Cobertura total | JaCoCo 100% (5 contadores); PIT 20/20 | `bubblesort-tdd-final-verify.txt`, `-final-mutacao.txt` |
 
@@ -65,7 +65,7 @@ Convenção: `Classe#método`. Testes do professor marcados com **(prof.)**. Os 
 | CT03: atualização 80 → 95 consultada no repositório | `ProdutoServiceIntegrationTest#deveAtualizarPrecoPersistido`; complementares `atualizarComPrecoInvalidoMantemPrecoAntigo`, `atualizarInexistente`, `atualizarNaoDuplicaRegistro` | `mvn-test.txt` |
 | CT04: POST /produtos → 200, id numérico, nome, preço | `ProdutoControllerIntegrationTest#deveCadastrarProdutoPelaApi`; `ProdutoApiServidorRealIntegrationTest#deveCadastrarPorHttpReal` | `mvn-test.txt` |
 | CT05: POST + GET /produtos/{id} com o mesmo conteúdo | `ProdutoControllerIntegrationTest#deveBuscarProdutoPelaApi`; `ProdutoApiServidorRealIntegrationTest#deveBuscarPorHttpReal` | `mvn-test.txt` |
-| Sem mocks para Repository/Service | Todas as classes usam `@SpringBootTest` com beans reais (nenhum `@MockBean`/`Mockito`) | `grep` no PR |
+| Sem mocks para Repository/Service | Todas as classes usam `@SpringBootTest` com beans reais (nenhum `@MockBean`/`Mockito`) | [agente-b-testes-do-professor.txt](2-bimestre/evidencias-validacao/agente-b-testes-do-professor.txt) (suíte roda com o `src/main` original do professor) e `grep -rE "MockBean|Mockito"` sem resultados |
 | `mvn test` e registro do resultado | n/a | `evidencias/mvn-test.txt`, `mvn-verify.txt` |
 | README com evidências e explicação do isolamento (1,0) | n/a | `README.md`, seções "Resultado", "Isolamento entre testes", "Respostas às discussões" e "Achados" |
 | Discussões do Ex. 1 e Ex. 2 | n/a | `README.md`, "Respostas às discussões do enunciado" (5 respostas) |

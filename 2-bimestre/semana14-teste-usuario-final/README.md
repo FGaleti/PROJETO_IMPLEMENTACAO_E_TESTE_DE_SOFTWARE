@@ -18,7 +18,7 @@ Cenário: comprar um fone de ouvido sem fio, achar um modelo bem avaliado, compa
 | [04b-sus-google-forms.txt](04b-sus-google-forms.txt) | SUS pronto para colar no Google Forms (o CSV exportado é aceito direto) |
 | [03b-planilha-simplificada.csv](03b-planilha-simplificada.csv) | Modelo de planilha simplificada para o avaliador preencher no celular (Google Sheets → CSV, aceito direto) |
 | [analise/](analise/) | Analisador automatizado (Maven, Java 17, JUnit 5), com 82 testes e JaCoCo 100% |
-| `evidencias/` | Prints das sessões (sem dados pessoais) e `analise.txt` (saída do analisador) |
+| `evidencias/` | Prints das sessões (sem dados pessoais) e `analise.txt` (saída do analisador, **gerada após a coleta**). Hoje há [analise-verify.txt](evidencias/analise-verify.txt): saída real dos 82 testes e da checagem de cobertura do analisador |
 
 ## Analisador
 
