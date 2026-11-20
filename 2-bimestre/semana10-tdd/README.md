@@ -49,6 +49,8 @@ nesses dois `pom.xml` foi fixado no valor alcançado (83 e 84). Se um teste regr
 
 Cada linha corresponde a um commit, na ordem do histórico. Cada arquivo de evidência é a saída real de `mvn -B test`.
 
+> **Notas de leitura do histórico.** (1) Nas linhas "RED (regressão)", o teste que falha **já existia** (é do professor). Quem provoca o RED é o commit de implementação mínima, por isso ele aparece como `feat(...)` e não como `test(...)`; a correção vem no commit `fix(...)` seguinte. (2) As evidências foram geradas quando os projetos ficavam em `aulas/SEMANA10/`, antes da reorganização por bimestre, e por isso mostram esses caminhos antigos. A pasta foi movida com `git mv`; use `git log --follow -- <arquivo>` para ver o histórico completo de cada arquivo.
+
 ### bubblesort-tdd
 
 | Ciclo | Etapa | O que aconteceu | Evidência |
@@ -92,7 +94,7 @@ O teste de listagem passou a conferir os nomes dos produtos (commit `test(carrin
 | Ciclo | Etapa | O que aconteceu | Evidência |
 |---|---|---|---|
 | 0 | RED | 4 falhas e **2 testes passando por acidente** (veja a seção "Testes que passam por acidente") | [ciclo0-red](evidencias/estoque-tdd-ciclo0-red.txt) |
-| 1 | RED (regressão) | `quantidade += q`: R2 e R3 passam, mas R6 (`naoDeveAdicionarQuantidadeNegativa`) **quebra** (estoque -10) | [ciclo1-red](evidencias/estoque-tdd-ciclo1-red.txt) |
+| 1 | RED (regressão) | `quantidade += q`: R2 e R3 passam, mas R6 (`naoDeveAdicionarQuantidadeNegativa`) **quebra** (estoque -10). `deveRetirarProdutoDoEstoque` (R4) continua falhando, porque é do ciclo 2 | [ciclo1-red](evidencias/estoque-tdd-ciclo1-red.txt) |
 | 1 | GREEN | Ignora entrada menor ou igual a zero. Fica pendente só o R4 (próximo ciclo). R5 passa por acidente porque `retirarEstoque()` está vazio | [ciclo1-green](evidencias/estoque-tdd-ciclo1-green.txt) |
 | 2 | RED (regressão) | `quantidade -= q`: R4 passa, mas R5 **quebra** (estoque -5) | [ciclo2-red](evidencias/estoque-tdd-ciclo2-red.txt) |
 | 2 | GREEN | Retirada só acontece se `q <= disponível`. Os 6 testes do professor passam | [ciclo2-green](evidencias/estoque-tdd-ciclo2-green.txt) |
