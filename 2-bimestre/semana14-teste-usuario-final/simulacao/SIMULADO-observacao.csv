@@ -1,0 +1,37 @@
+# DADOS SIMULADOS - NÃO SÃO RESULTADOS REAIS. Participantes S01-S05 não existem; servem só para demonstrar o processo de análise.
+participante,Tarefa,Tempo (s),Sucesso (S/N),Erros,com_ajuda,Observações
+S01,Acessar site,8,S,0,N,
+S01,Buscar produto,15,S,0,N,
+S01,Aplicar filtros,70,S,2,N,"[simulado] procurou 'melhores avaliados' na lista de ordenação"
+S01,Abrir detalhes,25,S,0,N,
+S01,Adicionar ao carrinho,12,S,0,N,
+S01,Simular compra,30,S,0,N,
+S01,Retornar à tela inicial,6,S,0,N,
+S02,Acessar site,10,S,0,N,
+S02,Buscar produto,20,S,0,N,
+S02,Aplicar filtros,110,S,3,S,"[simulado] precisou de dica para achar o filtro Full"
+S02,Abrir detalhes,30,S,0,N,
+S02,Adicionar ao carrinho,15,S,0,N,
+S02,Simular compra,45,S,1,N,"[simulado] estranhou o pedido de login"
+S02,Retornar à tela inicial,8,S,0,N,
+S03,Acessar site,6,S,0,N,
+S03,Buscar produto,12,S,0,N,
+S03,Aplicar filtros,55,S,1,N,
+S03,Abrir detalhes,20,S,0,N,
+S03,Adicionar ao carrinho,10,S,0,N,
+S03,Simular compra,25,S,0,N,
+S03,Retornar à tela inicial,5,S,0,N,
+S04,Acessar site,12,S,0,N,
+S04,Buscar produto,25,S,1,N,
+S04,Aplicar filtros,150,N,4,N,"[simulado] desistiu de ordenar por avaliação"
+S04,Abrir detalhes,40,S,0,N,
+S04,Adicionar ao carrinho,20,S,0,N,
+S04,Simular compra,60,S,1,N,
+S04,Retornar à tela inicial,10,S,0,N,
+S05,Acessar site,9,S,0,N,
+S05,Buscar produto,18,S,0,N,
+S05,Aplicar filtros,80,S,2,N,
+S05,Abrir detalhes,35,S,0,N,
+S05,Adicionar ao carrinho,25,S,1,N,"[simulado] clicou primeiro em Comprar agora"
+S05,Simular compra,40,S,0,N,
+S05,Retornar à tela inicial,7,S,0,N,

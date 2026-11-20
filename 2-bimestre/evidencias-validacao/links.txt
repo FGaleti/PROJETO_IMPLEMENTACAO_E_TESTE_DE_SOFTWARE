@@ -93,6 +93,13 @@ OK        2-bimestre/semana14-teste-usuario-final/06-relatorio-final.md -> 02-ro
 OK        2-bimestre/semana14-teste-usuario-final/06-relatorio-final.md -> 03-planilha-observacao.md
 OK        2-bimestre/semana14-teste-usuario-final/06-relatorio-final.md -> 04-questionario-sus.md
 OK        2-bimestre/semana14-teste-usuario-final/06-relatorio-final.md -> 05-termo-de-consentimento.md
+OK        2-bimestre/semana14-teste-usuario-final/06-relatorio-final.md -> 07-avaliacao-heuristica.md
+OK        2-bimestre/semana14-teste-usuario-final/06-relatorio-final.md -> 07-avaliacao-heuristica.md
+OK        2-bimestre/semana14-teste-usuario-final/06-relatorio-final.md -> simulacao/LEIA-ME.md
+OK        2-bimestre/semana14-teste-usuario-final/06-relatorio-final.md -> evidencias/DEMONSTRACAO-SIMULADA.txt
+OK        2-bimestre/semana14-teste-usuario-final/07-avaliacao-heuristica.md -> 01-plano-de-teste.md
+OK        2-bimestre/semana14-teste-usuario-final/07-avaliacao-heuristica.md -> 01-plano-de-teste.md#3-tarefas-e-critério-operacional-de-conclusão
+OK        2-bimestre/semana14-teste-usuario-final/07-avaliacao-heuristica.md -> 06-relatorio-final.md
 OK        2-bimestre/semana14-teste-usuario-final/KIT-SESSAO-RAPIDA.md -> 02-roteiro-sessao.md
 OK        2-bimestre/semana14-teste-usuario-final/KIT-SESSAO-RAPIDA.md -> 04b-sus-google-forms.txt
 OK        2-bimestre/semana14-teste-usuario-final/KIT-SESSAO-RAPIDA.md -> 04-questionario-sus.md
@@ -107,15 +114,25 @@ OK        2-bimestre/semana14-teste-usuario-final/README.md -> 04-questionario-s
 OK        2-bimestre/semana14-teste-usuario-final/README.md -> 05-termo-de-consentimento.md
 OK        2-bimestre/semana14-teste-usuario-final/README.md -> 06-relatorio-final.md
 OK        2-bimestre/semana14-teste-usuario-final/README.md -> KIT-SESSAO-RAPIDA.md
+OK        2-bimestre/semana14-teste-usuario-final/README.md -> 07-avaliacao-heuristica.md
+OK        2-bimestre/semana14-teste-usuario-final/README.md -> simulacao/LEIA-ME.md
+OK        2-bimestre/semana14-teste-usuario-final/README.md -> evidencias/DEMONSTRACAO-SIMULADA.txt
 OK        2-bimestre/semana14-teste-usuario-final/README.md -> 04b-sus-google-forms.txt
 OK        2-bimestre/semana14-teste-usuario-final/README.md -> 03b-planilha-simplificada.csv
 OK        2-bimestre/semana14-teste-usuario-final/README.md -> analise/
 OK        2-bimestre/semana14-teste-usuario-final/README.md -> evidencias/analise-verify.txt
+OK        2-bimestre/semana14-teste-usuario-final/simulacao/LEIA-ME.md -> SIMULADO-observacao.csv
+OK        2-bimestre/semana14-teste-usuario-final/simulacao/LEIA-ME.md -> SIMULADO-sus-google-forms.csv
+OK        2-bimestre/semana14-teste-usuario-final/simulacao/LEIA-ME.md -> ../evidencias/DEMONSTRACAO-SIMULADA.txt
+OK        2-bimestre/semana14-teste-usuario-final/simulacao/LEIA-ME.md -> ../06-relatorio-final.md
 OK        RASTREABILIDADE.md -> 2-bimestre/semana10-tdd/evidencias/
 OK        RASTREABILIDADE.md -> 2-bimestre/semana11-integracao-springboot/exercicios_integracao_springboot/evidencias/
 OK        RASTREABILIDADE.md -> 2-bimestre/semana14-teste-usuario-final/
 OK        RASTREABILIDADE.md -> 2-bimestre/evidencias-validacao/agente-b-testes-do-professor.txt
 OK        RASTREABILIDADE.md -> 2-bimestre/evidencias-validacao/agente-b-testes-do-professor.txt
+OK        RASTREABILIDADE.md -> 2-bimestre/semana14-teste-usuario-final/07-avaliacao-heuristica.md
+OK        RASTREABILIDADE.md -> 2-bimestre/semana14-teste-usuario-final/simulacao/LEIA-ME.md
+OK        RASTREABILIDADE.md -> 2-bimestre/semana14-teste-usuario-final/evidencias/DEMONSTRACAO-SIMULADA.txt
 OK        README.md -> 1-bimestre/README.md
 OK        README.md -> 2-bimestre/README.md
 OK        README.md -> 2-bimestre/semana10-tdd/bubblesort-tdd/
@@ -137,5 +154,5 @@ OK        README.md -> RASTREABILIDADE.md
 OK        README.md -> 2-bimestre/evidencias-validacao/
 OK        README.md -> .github/workflows/testes.yml
 
-Links relativos verificados: 138 | quebrados: 0
+Links relativos verificados: 155 | quebrados: 0
 RESULTADO: PASSOU

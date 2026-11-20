@@ -15,6 +15,8 @@ Cenário: comprar um fone de ouvido sem fio, achar um modelo bem avaliado, compa
 | [05-termo-de-consentimento.md](05-termo-de-consentimento.md) | Termo curto, sem dado pessoal identificável |
 | [06-relatorio-final.md](06-relatorio-final.md) | Estrutura completa do relatório; resultados **pendentes de coleta** |
 | [KIT-SESSAO-RAPIDA.md](KIT-SESSAO-RAPIDA.md) | **Uma página para conduzir cada sessão em ~8 min** (briefing, tarefas, o que anotar, como exportar) |
+| [07-avaliacao-heuristica.md](07-avaliacao-heuristica.md) | **Avaliação heurística (Nielsen)** do fluxo: 9 hipóteses de problema com severidade preliminar, a confirmar nas sessões (avaliação de especialista, não teste com usuários) |
+| [simulacao/](simulacao/LEIA-ME.md) | ⚠️ **Dados SIMULADOS e rotulados**, só para demonstrar o processo de análise; saída em [evidencias/DEMONSTRACAO-SIMULADA.txt](evidencias/DEMONSTRACAO-SIMULADA.txt). **Não são resultados do teste** |
 | [04b-sus-google-forms.txt](04b-sus-google-forms.txt) | SUS pronto para colar no Google Forms (o CSV exportado é aceito direto) |
 | [03b-planilha-simplificada.csv](03b-planilha-simplificada.csv) | Modelo de planilha simplificada para o avaliador preencher no celular (Google Sheets → CSV, aceito direto) |
 | [analise/](analise/) | Analisador automatizado (Maven, Java 17, JUnit 5), com 82 testes e JaCoCo 100% |

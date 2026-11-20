@@ -1,0 +1,40 @@
+################################################################################
+#  DEMONSTRAÇÃO COM DADOS SIMULADOS — NÃO SÃO RESULTADOS DE TESTE COM USUÁRIOS
+#  Entradas: simulacao/SIMULADO-observacao.csv e simulacao/SIMULADO-sus-google-forms.csv
+#  Objetivo: mostrar que o processo de análise funciona de ponta a ponta.
+#  Comando:  ./mvnw -q compile exec:java -Dexec.args="../simulacao/SIMULADO-observacao.csv ../simulacao/SIMULADO-sus-google-forms.csv"
+################################################################################
+
+=== Teste de usuário final — Mercado Livre (análise automatizada) ===
+Participantes observados: 5 [S01, S02, S03, S04, S05]
+
+-- Taxa de sucesso por tarefa (concluída sem ajuda) e erros --
+Acessar site:              100,0% (5/5) | erros: 0
+Buscar produto:            100,0% (5/5) | erros: 1
+Aplicar filtros:           60,0% (3/5) | erros: 12
+Abrir detalhes:            100,0% (5/5) | erros: 0
+Adicionar ao carrinho:     100,0% (5/5) | erros: 1
+Simular compra:            100,0% (5/5) | erros: 2
+Retornar à tela inicial:   100,0% (5/5) | erros: 0
+Taxa de sucesso global (fluxo inteiro sem ajuda): 60,0% (3/5)
+Total de erros: 16
+
+-- Tempo total por participante (s) --
+S01: 166,0
+S02: 238,0
+S03: 133,0
+S04: 317,0
+S05: 214,0
+Tempo médio: 213,6 s | mediana: 214,0 s
+
+-- SUS (System Usability Scale) --
+S01: 75,0
+S02: 60,0
+S03: 92,5
+S04: 37,5
+S05: 70,0
+SUS médio: 67,0 (Marginal (abaixo da média))
+
+-- Critérios de sucesso do enunciado --
+[ATENDIDO] >= 90% adicionam ao carrinho sem ajuda: 100,0% (5/5) (com ajuda incluída: 100,0% (5/5))
+[ATENDIDO] Tempo médio <= 240 s (4 min): 213,6 s

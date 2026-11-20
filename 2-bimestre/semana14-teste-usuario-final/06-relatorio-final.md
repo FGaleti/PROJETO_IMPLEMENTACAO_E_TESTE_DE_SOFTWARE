@@ -17,6 +17,8 @@ SUS médio com interpretação e os 3 principais achados.
 - **Condução:** [02-roteiro-sessao.md](02-roteiro-sessao.md), com o mesmo roteiro para todas as sessões e janela anônima no navegador do participante.
 - **Instrumentos:** planilha de observação ([03](03-planilha-observacao.md)), SUS ([04](04-questionario-sus.md)) e termo de consentimento ([05](05-termo-de-consentimento.md)).
 - **Análise:** automatizada e testada (82 testes, JaCoCo 100%). Nenhuma conta manual.
+- **Avaliação heurística prévia (especialista, não usuários):** [07-avaliacao-heuristica.md](07-avaliacao-heuristica.md), com 9 hipóteses de problema (Nielsen) a confirmar nas sessões.
+- **Validação do processo de análise:** demonstração ponta a ponta com dados **simulados e rotulados** (Apêndice A). **Esses números não são resultados do teste.**
 - **Participantes:** ⏳ *n = pendente*; perfil resumido (faixa etária e frequência de compra), sem dados identificáveis.
 - **Datas, navegadores e dispositivos das sessões:** ⏳ *pendente*.
 
@@ -71,6 +73,8 @@ A severidade combina **frequência** (quantos participantes), **impacto** (atras
 |---|---|---|---|---|---|
 | A1 | *pendente de coleta* | | | | |
 
+Ponto de partida: as hipóteses H1–H9 da [avaliação heurística](07-avaliacao-heuristica.md) (com destaque para H1, ordenação "melhores avaliados", e H6, login antes do carrinho ou checkout). Cada uma só vira achado se for **observada** nas sessões.
+
 ## 5. Recomendações ⏳
 
 *Pendente.* Uma recomendação por achado de severidade ≥ 2, ligada ao número do achado.
@@ -84,3 +88,17 @@ A severidade combina **frequência** (quantos participantes), **impacto** (atras
 - **Cronometragem manual**, com imprecisão estimada de ±2 s por tarefa.
 - A tarefa 7 termina na tela de login ou de checkout. A usabilidade das etapas seguintes **não foi avaliada**.
 - ⏳ Outras limitações observadas durante as sessões.
+
+## Apêndice A: demonstração do processo de análise (dados SIMULADOS)
+
+> ⚠️ **Os números abaixo NÃO são resultados de teste com usuários.** Os participantes S01–S05 não existem.
+> Os dados foram escritos pela equipe ([simulacao/](simulacao/LEIA-ME.md)) só para demonstrar que a cadeia
+> planilha/Google Forms → CSV → analisador → relatório funciona. A saída completa do analisador está em
+> [evidencias/DEMONSTRACAO-SIMULADA.txt](evidencias/DEMONSTRACAO-SIMULADA.txt).
+
+O que a demonstração comprova sobre o **processo**, não sobre o site:
+- O analisador leu a planilha no formato do professor e o SUS no **formato exportado pelo Google Forms**, sem edição.
+- Ele calculou a taxa de sucesso por tarefa e global, os erros, os tempos (média e mediana), o SUS por participante e médio com interpretação, e avaliou os critérios C1 e C2.
+- Os valores calculados batem com a conferência manual feita pela equipe (por exemplo, tempo médio (166 + 238 + 133 + 317 + 214) / 5 = 213,6 s e SUS médio (75 + 60 + 92,5 + 37,5 + 70) / 5 = 67,0).
+
+Quando os CSVs reais existirem, o mesmo comando gera `evidencias/analise.txt`, e só esse arquivo alimenta as seções 1, 3, 4 e 5 deste relatório.
