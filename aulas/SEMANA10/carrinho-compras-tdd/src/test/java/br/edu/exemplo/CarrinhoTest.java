@@ -51,4 +51,34 @@ class CarrinhoTest {
         // Assert
         assertEquals(100.00, carrinho.getTotal(), DELTA);
     }
+
+    // ---------------------------------------------------------------- R3
+
+    @Test
+    @DisplayName("R3 — Teclado R$ 100,00 + Mouse R$ 50,00 deve totalizar R$ 150,00")
+    void r3DeveSomarVariosProdutos() {
+        // Arrange
+        Carrinho carrinho = new Carrinho();
+
+        // Act
+        carrinho.adicionar(new Produto("Teclado", 100.00));
+        carrinho.adicionar(new Produto("Mouse", 50.00));
+
+        // Assert
+        assertEquals(150.00, carrinho.getTotal(), DELTA);
+    }
+
+    @Test
+    @DisplayName("R3 — Valores com centavos devem ser somados com precisão de centavo")
+    void r3DeveSomarValoresComCentavos() {
+        // Arrange
+        Carrinho carrinho = new Carrinho();
+
+        // Act
+        carrinho.adicionar(new Produto("Cabo", 0.10));
+        carrinho.adicionar(new Produto("Adaptador", 0.20));
+
+        // Assert
+        assertEquals(0.30, carrinho.getTotal(), DELTA);
+    }
 }
