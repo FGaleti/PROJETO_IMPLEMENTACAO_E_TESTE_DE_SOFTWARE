@@ -9,26 +9,38 @@ permissions:
 
 jobs:
   verify:
-    name: verify (${{ matrix.nome }})
-    runs-on: ubuntu-latest
+    name: verify (${{ matrix.nome }}, ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
+        os: [ubuntu-latest, windows-latest]
+        nome:
+          - bubblesort-tdd
+          - carrinho-compras-tdd
+          - conta-bancaria-tdd-maven
+          - estoque-tdd
+          - exercicios_integracao_springboot
+          - analise-teste-usuario
+          - central-pedidos
         include:
           - nome: bubblesort-tdd
-            caminho: aulas/SEMANA10/bubblesort-tdd
+            caminho: 2-bimestre/semana10-tdd/bubblesort-tdd
           - nome: carrinho-compras-tdd
-            caminho: aulas/SEMANA10/carrinho-compras-tdd
+            caminho: 2-bimestre/semana10-tdd/carrinho-compras-tdd
           - nome: conta-bancaria-tdd-maven
-            caminho: aulas/SEMANA10/conta-bancaria-tdd-maven
+            caminho: 2-bimestre/semana10-tdd/conta-bancaria-tdd-maven
           - nome: estoque-tdd
-            caminho: aulas/SEMANA10/estoque-tdd
+            caminho: 2-bimestre/semana10-tdd/estoque-tdd
           - nome: exercicios_integracao_springboot
-            caminho: aulas/SEMANA11/exercicios_integracao_springboot
+            caminho: 2-bimestre/semana11-integracao-springboot/exercicios_integracao_springboot
           - nome: analise-teste-usuario
-            caminho: aulas/SEMANA14/teste-usuario-final/analise
+            caminho: 2-bimestre/semana14-teste-usuario-final/analise
+          - nome: central-pedidos
+            caminho: 1-bimestre/atividade03-junit-central-pedidos
     defaults:
       run:
+        shell: bash
         working-directory: ${{ matrix.caminho }}
     steps:
       - uses: actions/checkout@v4
@@ -40,14 +52,14 @@ jobs:
           java-version: '17'
           cache: maven
 
-      - name: mvn verify (testes + checagem de cobertura JaCoCo)
-        run: mvn -B -ntp verify
+      - name: ./mvnw verify (Maven Wrapper 3.9.9; testes + checagem de cobertura)
+        run: ./mvnw -B -ntp verify
 
       - name: Publica relatórios JaCoCo e Surefire
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: relatorios-${{ matrix.nome }}
+          name: relatorios-${{ matrix.nome }}-${{ matrix.os }}
           path: |
             ${{ matrix.caminho }}/target/site/jacoco/
             ${{ matrix.caminho }}/target/surefire-reports/
@@ -63,7 +75,7 @@ jobs:
         nome: [bubblesort-tdd, carrinho-compras-tdd, conta-bancaria-tdd-maven, estoque-tdd]
     defaults:
       run:
-        working-directory: aulas/SEMANA10/${{ matrix.nome }}
+        working-directory: 2-bimestre/semana10-tdd/${{ matrix.nome }}
     steps:
       - uses: actions/checkout@v4
 
@@ -74,13 +86,13 @@ jobs:
           java-version: '17'
           cache: maven
 
-      - name: mvn -Pmutacao verify
-        run: mvn -B -ntp -Pmutacao verify
+      - name: ./mvnw -Pmutacao verify
+        run: ./mvnw -B -ntp -Pmutacao verify
 
       - name: Publica relatório PIT
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: pit-${{ matrix.nome }}
-          path: aulas/SEMANA10/${{ matrix.nome }}/target/pit-reports/
+          path: 2-bimestre/semana10-tdd/${{ matrix.nome }}/target/pit-reports/
           if-no-files-found: warn
