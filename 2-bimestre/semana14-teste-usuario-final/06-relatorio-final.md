@@ -16,7 +16,7 @@ SUS médio com interpretação e os 3 principais achados.
 - **Plano e tarefas:** [01-plano-de-teste.md](01-plano-de-teste.md) (8 tarefas com critério operacional de conclusão).
 - **Condução:** [02-roteiro-sessao.md](02-roteiro-sessao.md), com o mesmo roteiro para todas as sessões e janela anônima no navegador do participante.
 - **Instrumentos:** planilha de observação ([03](03-planilha-observacao.md)), SUS ([04](04-questionario-sus.md)) e termo de consentimento ([05](05-termo-de-consentimento.md)).
-- **Análise:** automatizada e testada (76 testes, JaCoCo 100%). Nenhuma conta manual.
+- **Análise:** automatizada e testada (82 testes, JaCoCo 100%). Nenhuma conta manual.
 - **Participantes:** ⏳ *n = pendente*; perfil resumido (faixa etária e frequência de compra), sem dados identificáveis.
 - **Datas, navegadores e dispositivos das sessões:** ⏳ *pendente*.
 

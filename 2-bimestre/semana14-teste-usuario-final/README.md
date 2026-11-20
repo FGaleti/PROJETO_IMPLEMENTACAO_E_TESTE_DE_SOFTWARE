@@ -14,16 +14,19 @@ Cenário: comprar um fone de ouvido sem fio, achar um modelo bem avaliado, compa
 | [04-questionario-sus.csv](04-questionario-sus.csv) / [.md](04-questionario-sus.md) | Os 10 itens do SUS, fórmula de apuração e faixas de interpretação |
 | [05-termo-de-consentimento.md](05-termo-de-consentimento.md) | Termo curto, sem dado pessoal identificável |
 | [06-relatorio-final.md](06-relatorio-final.md) | Estrutura completa do relatório; resultados **pendentes de coleta** |
-| [analise/](analise/) | Analisador automatizado (Maven, Java 17, JUnit 5), com 76 testes e JaCoCo 100% |
+| [KIT-SESSAO-RAPIDA.md](KIT-SESSAO-RAPIDA.md) | **Uma página para conduzir cada sessão em ~8 min** (briefing, tarefas, o que anotar, como exportar) |
+| [04b-sus-google-forms.txt](04b-sus-google-forms.txt) | SUS pronto para colar no Google Forms (o CSV exportado é aceito direto) |
+| [03b-planilha-simplificada.csv](03b-planilha-simplificada.csv) | Modelo de planilha simplificada para o avaliador preencher no celular (Google Sheets → CSV, aceito direto) |
+| [analise/](analise/) | Analisador automatizado (Maven, Java 17, JUnit 5), com 82 testes e JaCoCo 100% |
 | `evidencias/` | Prints das sessões (sem dados pessoais) e `analise.txt` (saída do analisador) |
 
 ## Analisador
 
 ```bash
 cd analise
-mvn verify                  # 76 testes + checagem de 100% de cobertura
-mvn -q compile exec:java    # lê ../03-planilha-observacao.csv e ../04-questionario-sus.csv
-mvn -q compile exec:java > ../evidencias/analise.txt   # salva a evidência
+./mvnw verify                # 82 testes + checagem de 100% de cobertura (ou mvn, se instalado)
+./mvnw -q compile exec:java  # lê ../03-planilha-observacao.csv e ../04-questionario-sus.csv
+./mvnw -q compile exec:java > ../evidencias/analise.txt   # salva a evidência
 ```
 
 Ele calcula: taxa de sucesso **sem ajuda** por tarefa e global (fluxo inteiro), erros por tarefa, tempo total por participante, tempo médio e mediano,

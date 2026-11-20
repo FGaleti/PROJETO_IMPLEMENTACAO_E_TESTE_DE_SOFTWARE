@@ -9,7 +9,7 @@ Os quatro projetos partem do código-base original do professor (commit `chore: 
 
 ## Como executar
 
-Pré-requisitos: Java 17+ e Maven 3.9+. Rode os comandos dentro da pasta de cada projeto.
+Pré-requisitos: Java 17+. Rode os comandos dentro da pasta de cada projeto. Use `mvn` (Maven 3.9+ instalado) ou o Maven Wrapper incluído (`./mvnw`, ou `mvnw.cmd` no Windows), que tem o mesmo efeito.
 
 | Comando | O que faz |
 |---|---|

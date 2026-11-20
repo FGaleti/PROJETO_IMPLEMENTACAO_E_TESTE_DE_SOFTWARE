@@ -4,7 +4,8 @@ Cada requisito dos enunciados oficiais aponta para os testes que o cobrem e para
 Fontes relidas: `REQUISITOS.md` (bubblesort e carrinho), `README.md` (conta e estoque), `requisitos_estoque_tdd.md`,
 `lista_exercicios_integracao_springboot.md`, `README.md` do projeto da Semana 11 e `TESTE USUARIO FINAL.pdf`.
 
-Convenção: `Classe#método`. Testes do professor marcados com **(prof.)**. Os caminhos de evidência são relativos a cada pasta de semana.
+Convenção: `Classe#método`. Testes do professor marcados com **(prof.)**. Os caminhos de evidência são relativos a cada pasta de semana:
+[Semana 10](2-bimestre/semana10-tdd/evidencias/), [Semana 11](2-bimestre/semana11-integracao-springboot/exercicios_integracao_springboot/evidencias/) e [Semana 14](2-bimestre/semana14-teste-usuario-final/).
 
 ## Semana 10: bubblesort-tdd (`REQUISITOS.md`)
 
@@ -77,7 +78,7 @@ Convenção: `Classe#método`. Testes do professor marcados com **(prof.)**. Os 
 | 2. Cenário de uso | `01` §2; `02-roteiro-sessao.md` §B (leitura padronizada) | Pronto |
 | 3. Tarefas 1–7 | `01` §3 (8 tarefas com critério operacional); `02` §C; `03-planilha-observacao.csv` (linhas) | Pronto |
 | (lacunas 4 e 5 do PDF) | `01` §4 (perfil e nº ≥ 5) e §5 (procedimento) | Pronto |
-| 6. Dados coletados: tempo, taxa de sucesso sem ajuda, erros | `03-planilha-observacao.csv/.md`; `AnalisadorUsabilidadeTest#tempos`, `#sucessoPorTarefa`, `#sucessoGlobal`, `#erros` | Analisador testado; **dados pendentes de coleta** |
+| 6. Dados coletados: tempo, taxa de sucesso sem ajuda, erros | `03-planilha-observacao.csv/.md`; `AnalisadorUsabilidadeTest#tempos`, `#sucessoPorTarefa`, `#sucessoGlobal`, `#erros` | Analisador testado (82 testes; aceita também Google Forms e planilha simplificada); **dados pendentes de coleta** |
 | 7. Critério: 90% adicionam ao carrinho | `AnalisadorUsabilidade#criterioCarrinho`; testes `criteriosAtendidos`, `criteriosNaoAtendidos`, `fronteirasDosCriterios` (9/10 = 90%) | Analisador testado; **resultado pendente** |
 | 7. Critério: tempo médio ≤ 4 min | `AnalisadorUsabilidade#criterioTempo`; os mesmos testes (240 s / 241 s) | Analisador testado; **resultado pendente** |
 | 8. Papéis e ferramentas (inclui formulário SUS) | `01` §8; `04-questionario-sus.csv/.md`; `CalculadoraSusTest` (50 / 100 / 0) | Pronto |

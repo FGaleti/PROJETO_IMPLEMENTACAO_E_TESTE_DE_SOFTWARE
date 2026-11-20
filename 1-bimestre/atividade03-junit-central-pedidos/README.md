@@ -7,7 +7,7 @@ Projeto Java 17, Maven, JUnit **5** e JaCoCo. A implementação está pronta; su
 Requisitos: JDK 17 ou superior e Maven 3.9+. Abra esta pasta como projeto Maven na IDE e aguarde a importação das dependências (a primeira execução precisa de internet).
 
 ```sh
-cd aulas/SEMANA06/central-pedidos
+cd 1-bimestre/atividade03-junit-central-pedidos
 mvn test
 ```
 
