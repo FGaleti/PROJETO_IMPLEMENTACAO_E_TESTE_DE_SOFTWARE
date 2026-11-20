@@ -1,0 +1,25 @@
+# Normaliza fins de linha no repositório (LF), independentemente do SO de quem commita.
+* text=auto
+
+# Scripts de shell e Maven Wrapper (Unix) sempre com LF, para rodar em Linux/macOS/Git Bash.
+*.sh   text eol=lf
+mvnw   text eol=lf
+
+# Scripts Windows sempre com CRLF.
+*.cmd  text eol=crlf
+*.bat  text eol=crlf
+
+# Código e dados em texto
+*.java text
+*.xml  text
+*.md   text
+*.csv  text
+*.yml  text
+*.properties text
+
+# Binários
+*.pdf  binary
+*.docx binary
+*.png  binary
+*.jpg  binary
+*.jar  binary
