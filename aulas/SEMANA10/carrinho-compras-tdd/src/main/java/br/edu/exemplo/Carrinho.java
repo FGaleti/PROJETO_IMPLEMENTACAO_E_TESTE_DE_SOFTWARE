@@ -1,6 +1,7 @@
 package br.edu.exemplo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -53,6 +54,11 @@ public class Carrinho {
 
     public int getQuantidadeItens() {
         return produtos.size();
+    }
+
+    /** Visão somente leitura dos produtos, na ordem de inclusão. */
+    public List<Produto> getProdutos() {
+        return Collections.unmodifiableList(produtos);
     }
 
     private static void validar(Produto produto) {
