@@ -1,0 +1,32 @@
+TEXTO PRONTO PARA O GOOGLE FORMS - Questionário SUS (System Usability Scale)
+==========================================================================
+
+Como montar (5 minutos):
+1. forms.google.com > Formulário em branco.
+2. Título e descrição: copie o bloco [CABEÇALHO] abaixo.
+3. Pergunta 1: "Resposta curta", obrigatória, com o texto [CÓDIGO].
+4. Perguntas 2 a 11: tipo "Escala linear", de 1 a 5, obrigatórias.
+   Rótulo do 1: "Discordo totalmente"; rótulo do 5: "Concordo totalmente".
+   Cole cada linha Q1...Q10 como título, EXATAMENTE como está (o "Qn -" no início é o que o analisador reconhece).
+5. Configurações: NÃO coletar e-mails e NÃO exigir login.
+6. Depois das sessões: Respostas > ⋮ > Fazer download das respostas (.csv).
+   Descompacte e salve o arquivo como 04-questionario-sus.csv nesta pasta (pode substituir o existente).
+
+[CABEÇALHO]
+Título: Avaliação do site Mercado Livre (SUS)
+Descrição: Pesquisa anônima de atividade acadêmica. Marque de 1 (discordo totalmente) a 5 (concordo totalmente), pensando no site que você acabou de usar. Responda rápido; se não tiver opinião, marque 3.
+
+[CÓDIGO]
+Código do participante (ex.: P01)
+
+[PERGUNTAS - escala linear 1 a 5]
+Q1 - Eu acho que gostaria de usar este site com frequência.
+Q2 - Eu achei o site desnecessariamente complexo.
+Q3 - Eu achei o site fácil de usar.
+Q4 - Eu acho que precisaria da ajuda de uma pessoa com conhecimentos técnicos para usar o site.
+Q5 - Eu achei que as várias funções do site estão bem integradas.
+Q6 - Eu achei que há muita inconsistência no site.
+Q7 - Eu imagino que a maioria das pessoas aprenderia a usar este site rapidamente.
+Q8 - Eu achei o site muito complicado de usar.
+Q9 - Eu me senti muito confiante ao usar o site.
+Q10 - Eu precisei aprender várias coisas antes de conseguir usar o site.
