@@ -24,6 +24,10 @@ public final class Relatorio {
         }
         sb.append("Participantes observados: ").append(a.participantes().size())
                 .append(' ').append(a.participantes()).append('\n');
+        if (a.resultadosParciais()) {
+            sb.append(String.format(PT_BR, "ATENÇÃO: só %d sessão(ões) realizada(s), menos que as %d planejadas: "
+                    + "resultados PARCIAIS.%n", a.participantes().size(), AnalisadorUsabilidade.MINIMO_SESSOES));
+        }
 
         sb.append("\n-- Taxa de sucesso por tarefa (concluída sem ajuda) e erros --\n");
         Map<String, Integer> erros = a.errosPorTarefa();

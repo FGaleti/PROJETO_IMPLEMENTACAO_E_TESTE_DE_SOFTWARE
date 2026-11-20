@@ -19,6 +19,8 @@ public final class AnalisadorUsabilidade {
     public static final double META_CARRINHO = 0.90;
     /** Critério 2: tempo médio para concluir o teste de até 4 minutos. */
     public static final double META_TEMPO_SEGUNDOS = 240.0;
+    /** Número mínimo de sessões do plano de teste; abaixo disso os resultados são parciais. */
+    public static final int MINIMO_SESSOES = 5;
 
     private final List<Observacao> observacoes;
     private final List<RespostaSus> respostasSus;
@@ -30,6 +32,11 @@ public final class AnalisadorUsabilidade {
 
     public boolean semDados() {
         return observacoes.isEmpty();
+    }
+
+    /** Verdadeiro quando houve menos sessões que o mínimo planejado. */
+    public boolean resultadosParciais() {
+        return participantes().size() < MINIMO_SESSOES;
     }
 
     public TreeSet<String> participantes() {

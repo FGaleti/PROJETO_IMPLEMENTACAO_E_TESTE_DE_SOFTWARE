@@ -1,0 +1,9 @@
+participante,tarefa,segundos,ok,erros,ajuda,obs
+F01,1,8,Sim,0,Não,
+F01,2,20,sim,0,não,
+F01,3,70,Sim,2,Sim,"aplicou Frete grátis antes do Full"
+F01,4,25,Sim,0,Não,
+F01,5,12,Sim,0,Não,
+F01,6,30,Não,1,Não,parou na tela de login sem achar o botão
+F01,7,6,Sim,0,Não,
+F02,5,,,,,ainda não coletado
