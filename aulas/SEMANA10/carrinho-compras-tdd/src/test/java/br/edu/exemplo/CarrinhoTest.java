@@ -6,6 +6,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -339,5 +341,40 @@ class CarrinhoTest {
         // Assert
         assertEquals(0.0, desconto, DELTA);
         assertEquals(0.0, carrinho.getSubtotal(), DELTA);
+    }
+
+    // ------------------------------------------------- Consulta dos itens
+
+    @Test
+    @DisplayName("getProdutos() deve listar os produtos na ordem de inclusão")
+    void deveListarProdutosNaOrdemDeInclusao() {
+        // Arrange
+        Carrinho carrinho = new Carrinho();
+        Produto teclado = new Produto("Teclado", 100.00);
+        Produto mouse = new Produto("Mouse", 50.00);
+        carrinho.adicionar(teclado);
+        carrinho.adicionar(mouse);
+
+        // Act
+        List<Produto> produtos = carrinho.getProdutos();
+
+        // Assert
+        assertEquals(List.of(teclado, mouse), produtos);
+    }
+
+    @Test
+    @DisplayName("getProdutos() deve ser imutável: modificar a lista lança UnsupportedOperationException")
+    void listaDeProdutosDeveSerImutavel() {
+        // Arrange
+        Carrinho carrinho = new Carrinho();
+        carrinho.adicionar(new Produto("Teclado", 100.00));
+        List<Produto> produtos = carrinho.getProdutos();
+
+        // Act + Assert
+        assertThrows(UnsupportedOperationException.class,
+                () -> produtos.add(new Produto("Burla", -1.00)));
+        assertThrows(UnsupportedOperationException.class, produtos::clear);
+        assertEquals(1, carrinho.getQuantidadeItens());
+        assertEquals(100.00, carrinho.getTotal(), DELTA);
     }
 }
