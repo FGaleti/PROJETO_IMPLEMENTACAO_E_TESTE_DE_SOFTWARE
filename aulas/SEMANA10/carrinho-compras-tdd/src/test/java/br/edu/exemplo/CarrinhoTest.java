@@ -360,6 +360,8 @@ class CarrinhoTest {
 
         // Assert
         assertEquals(List.of(teclado, mouse), produtos);
+        assertEquals("Teclado", produtos.get(0).getNome());
+        assertEquals("Mouse", produtos.get(1).getNome());
     }
 
     @Test
