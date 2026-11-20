@@ -2,9 +2,12 @@ package br.edu.exemplo;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /*
@@ -170,6 +173,80 @@ class CarrinhoTest {
 
         // Assert
         assertEquals(0.0, carrinho.getTotal(), DELTA);
+        assertEquals(0, carrinho.getQuantidadeItens());
+    }
+
+    // ---------------------------------------------------------------- R5
+    // Decisão: preço negativo é rejeitado com IllegalArgumentException e o
+    // carrinho permanece inalterado; preço zero é válido (ex.: brinde).
+
+    @Test
+    @DisplayName("R5 — Teclado de R$ -100,00 deve lançar IllegalArgumentException")
+    void r5ProdutoComPrecoNegativoDeveLancarExcecao() {
+        // Arrange
+        Carrinho carrinho = new Carrinho();
+        Produto invalido = new Produto("Teclado", -100.00);
+
+        // Act + Assert
+        IllegalArgumentException erro = assertThrows(IllegalArgumentException.class,
+                () -> carrinho.adicionar(invalido));
+        assertEquals("Preço do produto não pode ser negativo", erro.getMessage());
+    }
+
+    @Test
+    @DisplayName("R5 — Tentativa inválida não altera itens nem total do carrinho")
+    void r5ProdutoInvalidoNaoAlteraCarrinho() {
+        // Arrange
+        Carrinho carrinho = new Carrinho();
+        carrinho.adicionar(new Produto("Mouse", 50.00));
+
+        // Act
+        assertThrows(IllegalArgumentException.class,
+                () -> carrinho.adicionar(new Produto("Teclado", -100.00)));
+
+        // Assert
+        assertEquals(50.00, carrinho.getTotal(), DELTA);
+        assertEquals(1, carrinho.getQuantidadeItens());
+    }
+
+    @ParameterizedTest(name = "preço {0} é válido")
+    @ValueSource(doubles = {0.00, 0.01})
+    @DisplayName("R5 — Fronteira: preços 0,00 e 0,01 são aceitos")
+    void r5PrecoNaoNegativoNaFronteiraEhAceito(double preco) {
+        // Arrange
+        Carrinho carrinho = new Carrinho();
+
+        // Act
+        carrinho.adicionar(new Produto("Brinde", preco));
+
+        // Assert
+        assertEquals(1, carrinho.getQuantidadeItens());
+        assertEquals(preco, carrinho.getTotal(), DELTA);
+    }
+
+    @ParameterizedTest(name = "preço {0} é rejeitado")
+    @ValueSource(doubles = {-0.01, -100.00})
+    @DisplayName("R5 — Fronteira: preços -0,01 e -100,00 são rejeitados")
+    void r5PrecoNegativoNaFronteiraEhRejeitado(double preco) {
+        // Arrange
+        Carrinho carrinho = new Carrinho();
+
+        // Act + Assert
+        assertThrows(IllegalArgumentException.class,
+                () -> carrinho.adicionar(new Produto("Item", preco)));
+        assertEquals(0, carrinho.getQuantidadeItens());
+    }
+
+    @Test
+    @DisplayName("R5 — Produto null deve lançar IllegalArgumentException")
+    void r5ProdutoNuloDeveLancarExcecao() {
+        // Arrange
+        Carrinho carrinho = new Carrinho();
+
+        // Act + Assert
+        IllegalArgumentException erro = assertThrows(IllegalArgumentException.class,
+                () -> carrinho.adicionar(null));
+        assertEquals("Produto não pode ser nulo", erro.getMessage());
         assertEquals(0, carrinho.getQuantidadeItens());
     }
 }
