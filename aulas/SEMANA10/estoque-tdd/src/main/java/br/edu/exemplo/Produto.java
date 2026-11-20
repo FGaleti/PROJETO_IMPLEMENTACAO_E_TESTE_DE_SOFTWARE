@@ -19,7 +19,9 @@ public class Produto {
     }
 
     public void adicionarEstoque(int quantidade) {
-        this.quantidade += quantidade;
+        if (quantidade > 0) {
+            this.quantidade += quantidade;
+        }
     }
 
     public void retirarEstoque(int quantidade) {
