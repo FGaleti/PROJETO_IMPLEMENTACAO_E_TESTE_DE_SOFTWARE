@@ -16,6 +16,6 @@ public class ContaBancaria {
     }
 
     public void sacar(double valor) {
-        // TODO: implementar orientado pelos testes
+        saldo -= valor;
     }
 }
