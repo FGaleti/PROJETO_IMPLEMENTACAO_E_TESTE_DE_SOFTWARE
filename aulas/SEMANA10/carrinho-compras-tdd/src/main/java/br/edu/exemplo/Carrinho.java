@@ -8,7 +8,7 @@ public class Carrinho {
     private double total;
 
     public void adicionar(Produto produto) {
-        total = produto.getPreco();
+        total += produto.getPreco();
     }
 
     public double getTotal() {
