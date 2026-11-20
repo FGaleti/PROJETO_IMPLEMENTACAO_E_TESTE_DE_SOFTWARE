@@ -9,6 +9,9 @@ public class BubbleSort {
     }
 
     public void ordenar() {
+        if (numeros == null) {
+            return;
+        }
         for (int fim = numeros.length - 1; fim > 0; fim--) {
             for (int i = 0; i < fim; i++) {
                 if (numeros[i] > numeros[i + 1]) {

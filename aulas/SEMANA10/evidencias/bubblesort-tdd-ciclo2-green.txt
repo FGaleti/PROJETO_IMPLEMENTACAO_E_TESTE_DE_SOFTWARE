@@ -1,0 +1,49 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< br.edu.exemplo:bubblesort-tdd >--------------------
+[INFO] Building bubblesort-tdd 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (jacoco-prepare-agent) @ bubblesort-tdd ---
+[INFO] argLine set to "-javaagent:C:\\Users\\felipe.gongora\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.12\\org.jacoco.agent-0.8.12-runtime.jar=destfile=C:\\Users\\felipe.gongora\\Documents\\Testes de Software\\PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE\\aulas\\SEMANA10\\bubblesort-tdd\\target\\jacoco.exec"
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ bubblesort-tdd ---
+[INFO] skip non existing resourceDirectory C:\Users\felipe.gongora\Documents\Testes de Software\PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE\aulas\SEMANA10\bubblesort-tdd\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ bubblesort-tdd ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug target 17] to target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ bubblesort-tdd ---
+[INFO] skip non existing resourceDirectory C:\Users\felipe.gongora\Documents\Testes de Software\PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE\aulas\SEMANA10\bubblesort-tdd\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ bubblesort-tdd ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug target 17] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.2:test (default-test) @ bubblesort-tdd ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running br.edu.exemplo.BubbleSortCasosAdicionaisTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.288 s -- in br.edu.exemplo.BubbleSortCasosAdicionaisTest
+[INFO] Running br.edu.exemplo.BubbleSortTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.040 s -- in br.edu.exemplo.BubbleSortTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.12:report (jacoco-report) @ bubblesort-tdd ---
+[INFO] Loading execution data file C:\Users\felipe.gongora\Documents\Testes de Software\PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE\aulas\SEMANA10\bubblesort-tdd\target\jacoco.exec
+[INFO] Analyzed bundle 'bubblesort-tdd' with 1 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.850 s
+[INFO] Finished at: 2026-11-20T14:29:49-03:00
+[INFO] ------------------------------------------------------------------------
