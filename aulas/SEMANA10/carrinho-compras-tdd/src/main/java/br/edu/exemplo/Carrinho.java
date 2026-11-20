@@ -19,12 +19,24 @@ public class Carrinho {
         return produtos.remove(produto);
     }
 
-    public double getTotal() {
-        double total = 0.0;
+    public double getSubtotal() {
+        double subtotal = 0.0;
         for (Produto produto : produtos) {
-            total += produto.getPreco();
+            subtotal += produto.getPreco();
         }
-        return total;
+        return subtotal;
+    }
+
+    public double getDesconto() {
+        double subtotal = getSubtotal();
+        if (subtotal >= 500.00) {
+            return subtotal * 0.10;
+        }
+        return 0.0;
+    }
+
+    public double getTotal() {
+        return getSubtotal() - getDesconto();
     }
 
     public int getQuantidadeItens() {
