@@ -3,10 +3,22 @@ package br.edu.exemplo;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Carrinho de compras desenvolvido por TDD (ver REQUISITOS.md).
+ *
+ * <ul>
+ *   <li>Produto null ou com preço negativo é rejeitado com IllegalArgumentException (R5);
+ *       preço zero é válido.</li>
+ *   <li>Subtotal igual ou superior a {@value #VALOR_MINIMO_PARA_DESCONTO} recebe
+ *       desconto de 10% (R6).</li>
+ *   <li>remover() compara por identidade (Produto não define equals) e retira
+ *       apenas a primeira ocorrência (R4).</li>
+ * </ul>
+ */
 public class Carrinho {
 
-    // Implemente esta classe seguindo a sequência de requisitos
-    // apresentada em REQUISITOS.md e utilizando TDD.
+    static final double VALOR_MINIMO_PARA_DESCONTO = 500.00;
+    static final double PERCENTUAL_DESCONTO = 0.10;
 
     private final List<Produto> produtos = new ArrayList<>();
 
@@ -29,8 +41,8 @@ public class Carrinho {
 
     public double getDesconto() {
         double subtotal = getSubtotal();
-        if (subtotal >= 500.00) {
-            return subtotal * 0.10;
+        if (subtotal >= VALOR_MINIMO_PARA_DESCONTO) {
+            return subtotal * PERCENTUAL_DESCONTO;
         }
         return 0.0;
     }
