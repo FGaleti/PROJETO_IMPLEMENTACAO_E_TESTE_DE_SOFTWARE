@@ -12,7 +12,7 @@ public class ContaBancaria {
     }
 
     public void depositar(double valor) {
-        // TODO: implementar orientado pelos testes
+        saldo += valor;
     }
 
     public void sacar(double valor) {
