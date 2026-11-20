@@ -1,0 +1,25 @@
+# DADOS FICTÍCIOS PARA TESTE AUTOMATIZADO - NÃO SÃO RESULTADOS REAIS DE NENHUM PARTICIPANTE
+participante;Tarefa;Tempo (s);Sucesso (S/N);Erros;com_ajuda;Observações
+F01;Acessar site;10;S;0;N;
+F01;Buscar produto;20;S;0;N;
+F01;Aplicar filtros;60;S;1;N;"clicou em ""Mais vendidos"" antes de achar ""Mais relevantes; avaliação"""
+F01;Abrir detalhes;30;S;0;N;
+F01;Adicionar ao carrinho;15;S;0;N;
+F01;Simular compra;40;S;0;N;
+F01;Retornar à tela inicial;5;S;0;N;
+F02;Acessar site;15;S;0;N;
+F02;Buscar produto;25;S;0;N;
+F02;Aplicar filtros;90;S;2;S;pediu ajuda para achar o filtro Full
+F02;Abrir detalhes;40;S;0;N;
+F02;Adicionar ao carrinho;20;S;0;N;
+F02;Simular compra;50;S;0;N;
+F02;Retornar à tela inicial;10;S;0;N;
+F03;Acessar site;20;S;0;N;
+F03;Buscar produto;30;S;0;N;
+F03;Aplicar filtros;80;S;0;N;
+F03;Abrir detalhes;45;S;0;N;
+F03;Adicionar ao carrinho;25;S;0;N;
+F03;Simular compra;60;N;1;N;"parou na tela de login, multilinha
+na observação"
+F03;Retornar à tela inicial;10;S;0;N;
+F04;Acessar site;;;;;linha ainda não coletada: deve ser ignorada

@@ -1,0 +1,2 @@
+Coloque aqui os prints das sessões (sem nomes, e-mails, endereços ou rostos),
+nomeados como P01-tarefa6-carrinho.png, e o arquivo analise.txt gerado pelo analisador.

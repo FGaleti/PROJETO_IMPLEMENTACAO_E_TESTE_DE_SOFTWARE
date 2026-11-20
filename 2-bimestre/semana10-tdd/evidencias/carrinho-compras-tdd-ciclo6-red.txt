@@ -1,0 +1,101 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< br.edu.exemplo:carrinho-compras-tdd >-----------------
+[INFO] Building carrinho-compras-tdd 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (jacoco-prepare-agent) @ carrinho-compras-tdd ---
+[INFO] argLine set to "-javaagent:C:\\Users\\felipe.gongora\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.12\\org.jacoco.agent-0.8.12-runtime.jar=destfile=C:\\Users\\felipe.gongora\\Documents\\Testes de Software\\PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE\\aulas\\SEMANA10\\carrinho-compras-tdd\\target\\jacoco.exec"
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ carrinho-compras-tdd ---
+[INFO] skip non existing resourceDirectory C:\Users\felipe.gongora\Documents\Testes de Software\PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE\aulas\SEMANA10\carrinho-compras-tdd\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ carrinho-compras-tdd ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ carrinho-compras-tdd ---
+[INFO] skip non existing resourceDirectory C:\Users\felipe.gongora\Documents\Testes de Software\PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE\aulas\SEMANA10\carrinho-compras-tdd\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ carrinho-compras-tdd ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug target 17] to target\test-classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[267,38] cannot find symbol
+  symbol:   method getSubtotal()
+  location: variable carrinho of type br.edu.exemplo.Carrinho
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[268,37] cannot find symbol
+  symbol:   method getDesconto()
+  location: variable carrinho of type br.edu.exemplo.Carrinho
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[289,37] cannot find symbol
+  symbol:   method getSubtotal()
+  location: variable carrinho of type br.edu.exemplo.Carrinho
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[290,48] cannot find symbol
+  symbol:   method getDesconto()
+  location: variable carrinho of type br.edu.exemplo.Carrinho
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[306,38] cannot find symbol
+  symbol:   method getSubtotal()
+  location: variable carrinho of type br.edu.exemplo.Carrinho
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[307,37] cannot find symbol
+  symbol:   method getDesconto()
+  location: variable carrinho of type br.edu.exemplo.Carrinho
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[325,38] cannot find symbol
+  symbol:   method getSubtotal()
+  location: variable carrinho of type br.edu.exemplo.Carrinho
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[326,36] cannot find symbol
+  symbol:   method getDesconto()
+  location: variable carrinho of type br.edu.exemplo.Carrinho
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[337,35] cannot find symbol
+  symbol:   method getDesconto()
+  location: variable carrinho of type br.edu.exemplo.Carrinho
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[341,35] cannot find symbol
+  symbol:   method getSubtotal()
+  location: variable carrinho of type br.edu.exemplo.Carrinho
+[INFO] 10 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.166 s
+[INFO] Finished at: 2026-11-20T14:36:41-03:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:testCompile (default-testCompile) on project carrinho-compras-tdd: Compilation failure: Compilation failure: 
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[267,38] cannot find symbol
+[ERROR]   symbol:   method getSubtotal()
+[ERROR]   location: variable carrinho of type br.edu.exemplo.Carrinho
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[268,37] cannot find symbol
+[ERROR]   symbol:   method getDesconto()
+[ERROR]   location: variable carrinho of type br.edu.exemplo.Carrinho
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[289,37] cannot find symbol
+[ERROR]   symbol:   method getSubtotal()
+[ERROR]   location: variable carrinho of type br.edu.exemplo.Carrinho
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[290,48] cannot find symbol
+[ERROR]   symbol:   method getDesconto()
+[ERROR]   location: variable carrinho of type br.edu.exemplo.Carrinho
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[306,38] cannot find symbol
+[ERROR]   symbol:   method getSubtotal()
+[ERROR]   location: variable carrinho of type br.edu.exemplo.Carrinho
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[307,37] cannot find symbol
+[ERROR]   symbol:   method getDesconto()
+[ERROR]   location: variable carrinho of type br.edu.exemplo.Carrinho
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[325,38] cannot find symbol
+[ERROR]   symbol:   method getSubtotal()
+[ERROR]   location: variable carrinho of type br.edu.exemplo.Carrinho
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[326,36] cannot find symbol
+[ERROR]   symbol:   method getDesconto()
+[ERROR]   location: variable carrinho of type br.edu.exemplo.Carrinho
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[337,35] cannot find symbol
+[ERROR]   symbol:   method getDesconto()
+[ERROR]   location: variable carrinho of type br.edu.exemplo.Carrinho
+[ERROR] /C:/Users/felipe.gongora/Documents/Testes de Software/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE/aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:[341,35] cannot find symbol
+[ERROR]   symbol:   method getSubtotal()
+[ERROR]   location: variable carrinho of type br.edu.exemplo.Carrinho
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

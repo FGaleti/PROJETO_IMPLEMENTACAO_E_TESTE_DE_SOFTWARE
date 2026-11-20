@@ -1,0 +1,266 @@
+AGENTE C - CORRETOR HUMANO EXIGENTE COM RUBRICA
+Disciplina: Projeto, Implementacao e Teste de Software 2026 (prof. Joao Choma)
+Avaliacao: Prova 02 - Semanas 10 (TDD), 11 (integracao Spring Boot) e 14 (teste de usuario final)
+Entrega avaliada: https://github.com/FGaleti/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE
+  - branch develop, commit 1c93736 (HEAD da entrega)
+  - branch padrao do repositorio: main, commit d696469
+Data da avaliacao: 2026-11-20 (16:06, horario local; comando `date`)
+
+=====================================================================
+0. METODO E LIMITES
+=====================================================================
+- Enunciados lidos no clone do professor (README raiz, aulas/SEMANA10, aulas/SEMANA11, aulas/SEMANA14 PDF, desafios.md).
+- Entrega lida no clone da branch develop. Os 47 metodos citados em RASTREABILIDADE.md foram conferidos um a um:
+  45 sao metodos de teste em src/test; 2 (criterioCarrinho, criterioTempo) sao metodos de producao em
+  semana14.../analise/src/main e existem. Nenhuma referencia de metodo esta quebrada.
+- Os arquivos de teste do professor foram comparados com os da entrega (cmp byte a byte).
+- NAO reexecutei a suite: Java e Maven nao estao instalados nesta maquina, e nao instalei nada no sistema.
+  Usei (a) as saidas gravadas em evidencias/ e (b) o historico de CI do GitHub (API publica).
+- Logs de job do GitHub Actions exigem permissao de admin: nao consegui ler a causa da falha de CI.
+- Nao avaliei a pasta 1-bimestre (fora do escopo da Prova 02).
+
+=====================================================================
+RESULTADO GERAL
+=====================================================================
+O codigo e a documentacao das Semanas 10 e 11 estao bem feitos e batem com os enunciados.
+A entrega, porem, falha em tres pontos objetivos que um corretor veria em poucos minutos:
+  (1) a branch padrao do repositorio (main) nao contem a Prova 02;
+  (2) o CI no commit atual (1c93736) esta vermelho em um job de Semana 10;
+  (3) a documentacao cita evidencias e PR que nao existem no repositorio.
+A Semana 14 esta com preparacao completa, mas sem nenhuma execucao com usuarios reais.
+
+=====================================================================
+1. CHECKLIST ITEM A ITEM
+Status: ATENDIDO | PARCIAL | NAO ATENDIDO | N/A
+Caminhos relativos a 2-bimestre/ (exceto onde indicado).
+=====================================================================
+
+--- Semana 10: bubblesort-tdd (REQUISITOS.md) ---------------------------------
+ID     | Requisito (fonte)                              | Status    | Onde esta / evidencia
+S10-B1 | R1: ordenar [5,3,1,4,2] -> [1,2,3,4,5]         | ATENDIDO  | semana10-tdd/bubblesort-tdd/src/test/.../BubbleSortTest.java :: deveOrdenarVetorDesordenado (teste do prof, identico ao original); BubbleSortCasosAdicionaisTest :: deveOrdenarParticoesDeEntrada
+S10-B2 | R2: manter vetor ja ordenado                   | ATENDIDO  | BubbleSortTest :: deveManterVetorJaOrdenado; BubbleSortParadaAntecipadaTest :: deveExecutarSomenteAsPassagensNecessarias
+S10-B3 | R3: valores repetidos [3,1,3,2,1]              | ATENDIDO  | BubbleSortTest :: deveOrdenarVetorComValoresRepetidos
+S10-B4 | Ciclo RED -> GREEN -> REFACTOR com execucao    | ATENDIDO  | evidencias/bubblesort-tdd-ciclo0-red.txt (2 falhas do prof) -> ciclo1-green -> ciclo1-refactor; ciclo2 e ciclo3 (red/green)
+S10-B5 | Restricao: nao alterar os testes fornecidos    | ATENDIDO (codigo) / PARCIAL (doc) | BubbleSortTest.java, ContaBancariaTest.java e ProdutoTest.java sao identicos (cmp) aos do prof. A doc cita "Secao 'Verificacao final' do PR" (RASTREABILIDADE.md:18), que nao existe (ver D-04).
+
+--- Semana 10: carrinho-compras-tdd (REQUISITOS.md) ---------------------------
+ID     | Requisito (fonte)                                              | Status   | Onde esta / evidencia
+S10-C1 | R1: carrinho vazio com total 0,00                              | ATENDIDO | semana10-tdd/carrinho-compras-tdd/src/test/.../CarrinhoTest.java :: r1CarrinhoNovoDeveTerTotalZero
+S10-C2 | R2: adicionar Teclado 100 -> total 100                         | ATENDIDO | CarrinhoTest :: r2DeveAdicionarUmProduto
+S10-C3 | R3: Teclado 100 + Mouse 50 -> 150                              | ATENDIDO | CarrinhoTest :: r3DeveSomarVariosProdutos; r3DeveSomarValoresComCentavos
+S10-C4 | R4: remover Mouse -> 100                                       | ATENDIDO | CarrinhoTest :: r4DeveRemoverProduto (+ inexistente, vazio, uma ocorrencia, remover todos)
+S10-C5 | R5: preco negativo rejeitado; decidir (ignorar ou excecao) por teste | ATENDIDO | r5ProdutoComPrecoNegativoDeveLancarExcecao; fronteiras r5PrecoNaoNegativoNaFronteiraEhAceito (0,00/0,01) e r5PrecoNegativoNaFronteiraEhRejeitado (-0,01/-100). Decisao (excecao) em semana10-tdd/README.md:104. Ver desconto D-09 (discussao com o professor nao registrada).
+S10-C6 | R6: >= 500 recebe 10%; fronteiras 499,99 / 500,00 / 500,01 | ATENDIDO | CarrinhoTest :: r6CompraDe600DeveCustar540; r6FronteiraDoDesconto (CsvSource: 499.99->0.00; 500.00->50.00; 500.01->50.001)
+S10-C7 | Ciclo RED antes da implementacao, requisito a requisito | ATENDIDO | evidencias/carrinho-compras-tdd-ciclo1..ciclo7 (red/green; refactor nos ciclos 5 e 6). Ex.: ciclo3-red "esperado 150, obtido 50"
+S10-C8 | Relacao Carrinho -> Produto (armazenar e manipular)            | ATENDIDO | CarrinhoTest :: deveListarProdutosNaOrdemDeInclusao; listaDeProdutosDeveSerImutavel
+
+--- Semana 10: conta-bancaria-tdd-maven (README.md) ---------------------------
+ID     | Requisito (fonte)                                | Status   | Onde esta / evidencia
+S10-K1 | Depositar                                        | ATENDIDO | ContaBancariaTest :: deveDepositarValorNaConta (prof)
+S10-K2 | Acumular depositos                               | ATENDIDO | ContaBancariaTest :: deveAcumularDepositos (prof)
+S10-K3 | Sacar                                            | ATENDIDO | ContaBancariaTest :: deveSacarValorDaConta (prof); ContaBancariaCasosAdicionaisTest :: fronteiraDoSaque
+S10-K4 | Saque maior que saldo nao permitido              | ATENDIDO | ContaBancariaTest :: naoDevePermitirSaqueMaiorQueSaldo (prof); saqueEmContaZeradaDeveSerRecusado
+S10-K5 | Ciclo RED -> GREEN                               | ATENDIDO | evidencias/conta-bancaria-tdd-maven-ciclo0-red.txt ... ciclo3-green.txt
+
+--- Semana 10: estoque-tdd (requisitos_estoque_tdd.md) ------------------------
+ID     | Requisito (fonte)                                       | Status   | Onde esta / evidencia
+S10-E1 | R1: estoque inicial zero                                | ATENDIDO | ProdutoTest :: produtoDeveIniciarComEstoqueZero (prof)
+S10-E2 | R2: adicionar 10 -> 10                                  | ATENDIDO | ProdutoTest :: deveAdicionarProdutoAoEstoque (prof); ProdutoCasosAdicionaisTest :: fronteiraDaEntrada
+S10-E3 | R3: acumular 10 + 5 = 15                                | ATENDIDO | ProdutoTest :: deveAcumularQuantidadeEmEstoque (prof)
+S10-E4 | R4: retirar 3 de 10 -> 7                                | ATENDIDO | ProdutoTest :: deveRetirarProdutoDoEstoque (prof)
+S10-E5 | R5: retirada maior que estoque nao altera                | ATENDIDO | ProdutoTest :: naoDeveRetirarQuantidadeMaiorQueEstoque (prof); fronteiraDaRetirada
+S10-E6 | R6: entrada negativa OU igual a zero nao altera         | ATENDIDO | ProdutoTest :: naoDeveAdicionarQuantidadeNegativa (prof, so negativo); ProdutoCasosAdicionaisTest :: adicionarZeroDeveSerIgnorado (cobre o "igual a zero")
+
+--- Semana 10: transversal ----------------------------------------------------
+ID     | Requisito (fonte)                                                   | Status             | Onde esta / evidencia
+S10-T1 | Implementar TDD nos 4 projetos "ate a implementacao e cobertura total" | ATENDIDO (evidencia) | evidencias/*-final-verify.txt: BUILD SUCCESS; 25 / 26 / 17 / 19 testes; "All coverage checks have been met" (JaCoCo 100%). Mutacao: *-final-mutacao.txt (20/20, 21/21, 10/12, 11/13).
+S10-T2 | Build reproduzivel: README raiz l.55 diz que a CI roda ./mvnw verify em Ubuntu e Windows | NAO ATENDIDO (no HEAD) | CI run 44796992654 (SHA 1c93736) = failure. Unico job vermelho: "verify (estoque-tdd, ubuntu-latest)", passo "./mvnw verify (testes + checagem de cobertura)". O mesmo codigo passou em 18/18 jobs no SHA dd7588b (run 44796965894). O commit 1c93736 so acrescenta 2-bimestre/evidencias-validacao/links.txt (130 linhas). Causa nao identificada.
+
+--- Semana 11: exercicios_integracao_springboot (lista + ENUNCIADO.md) ---------
+ID      | Requisito (fonte)                                                  | Status   | Onde esta / evidencia
+S11-1   | CT01: cadastro valido (Teclado 150): ID, encontrado no repositorio, nome e preco | ATENDIDO | semana11-.../exercicios_integracao_springboot/src/test/java/br/edu/exemplo/ProdutoServiceIntegrationTest.java :: deveCadastrarERecuperarProduto (flush + clear; assertNotSame)
+S11-2   | CT02: nome em branco -> IllegalArgumentException; contagem nao muda | ATENDIDO | ProdutoServiceIntegrationTest :: naoDevePersistirProdutoComNomeEmBranco; ProdutoServiceIntegrationComplementarTest (16 execucoes)
+S11-3   | CT03 (desafio): cadastrar Mouse 80, atualizar para 95, consulta ao repositorio | ATENDIDO | ProdutoServiceIntegrationTest :: deveAtualizarPrecoPersistido
+S11-4   | CT04: POST /produtos -> 200, id numerico, nome Mouse, preco 80 | ATENDIDO | ProdutoControllerIntegrationTest :: deveCadastrarProdutoPelaApi
+S11-5   | CT05: POST + GET /produtos/{id} -> 200, JSON corresponde                | ATENDIDO | ProdutoControllerIntegrationTest :: deveBuscarProdutoPelaApi (compara JsonNode do POST com o do GET)
+S11-6   | Usar @SpringBootTest, @Autowired, @Transactional; asserts sugeridos     | ATENDIDO | presentes nos dois arquivos de teste
+S11-7   | Restricao: sem mocks para ProdutoRepository / ProdutoService            | ATENDIDO | grep "MockBean|Mockito|mock(" em src/test: nenhum resultado
+S11-8   | Projeto-base (src/main) nao alterado                                    | ATENDIDO | cmp byte a byte com o prof: 7 arquivos identicos
+S11-9   | mvn test executado e resultado registrado                              | ATENDIDO | evidencias/mvn-test.txt (34 testes, 0 falhas, BUILD SUCCESS); mvn-verify.txt (JaCoCo ok)
+S11-10  | Responder as 5 perguntas de discussao                                  | ATENDIDO | README.md "Respostas as discussoes do enunciado" (l.110-149). Ver secao 2.
+S11-11  | README com evidencias e explicacao do isolamento                       | ATENDIDO | exercicios_integracao_springboot/README.md: "Resultado" (l.21), "Isolamento entre testes" (l.151)
+S11-12  | Extra: teste de sanidade (sabotagens)                                  | ATENDIDO (bonus) | evidencias/sanidade-sabotagem.txt; README l.48-56
+
+--- Semana 14: teste de usuario final (TESTE USUARIO FINAL.pdf) ---------------
+ID      | Item do enunciado                                                    | Status    | Onde esta / evidencia
+S14-1   | 1. Objetivo do teste                                                 | ATENDIDO  | semana14-teste-usuario-final/01-plano-de-teste.md §1
+S14-2   | 2. Cenario de uso (fone Bluetooth, comprar ate o carrinho)           | ATENDIDO  | 01-plano-de-teste.md §2; 02-roteiro-sessao.md §B
+S14-3   | 3. Tarefas 1-7 (acessar, pesquisar, filtros Full e melhores avaliados, detalhes, carrinho, simular compra, voltar) | ATENDIDO | 01 §3 (8 tarefas com criterio de conclusao; tarefas 3 e 4 somadas em "Aplicar filtros"); 02 §C; KIT-SESSAO-RAPIDA.md
+S14-4   | 4 e 5 (lacunas do PDF): perfil e procedimento                         | ATENDIDO (extra) | 01 §4 e §5
+S14-5   | 6. Dados coletados: tempo, taxa de sucesso sem ajuda, erros           | PARCIAL   | Metricas definidas (01 §6); planilha pronta com P01-P05 e 7 linhas cada, todas em branco (03-planilha-observacao.csv). Dados coletados: 0.
+S14-6   | 7. Criterio: 90% adicionam o produto ao carrinho                     | PARCIAL   | Analisador implementa C1: analise/src/main/.../AnalisadorUsabilidade.java:126 (criterioCarrinho); teste criteriosAtendidos / fronteirasDosCriterios. Resultado: pendente.
+S14-7   | 7. Criterio: tempo medio ate 4 min                                    | PARCIAL   | AnalisadorUsabilidade.java:135 (criterioTempo); teste tempos / fronteirasDosCriterios. Resultado: pendente.
+S14-8   | 8. Papeis, ferramentas e formulario SUS                               | ATENDIDO  | 01 §8; 04-questionario-sus.md (10 itens SUS padrao; formula x2,5 correta); analise/.../CalculadoraSusTest (50 / 100 / 0). Nota: enunciado diz "Avaliador: colega"; o plano diz "Integrante da equipe" (01 §8).
+S14-9   | 9. Planilha de observacao (colunas do modelo)                        | ATENDIDO  | 03-planilha-observacao.csv: Tarefa, Tempo (s), Sucesso (S/N), Erros, Observacoes + participante, com_ajuda
+S14-10  | "Executar o teste de usuario" com pessoas reais (criterio de sucesso e tempo dependem disso) | NAO ATENDIDO (pendente) | 0 sessoes realizadas. evidencias/ tem apenas LEIA-ME.txt. Relatorio 06 com "pendente" em todas as secoes de resultado. Nao depende de codigo.
+S14-11  | Analisador automatizado (82 testes, JaCoCo 100%)                     | ATENDIDO no CI / PARCIAL na doc | Jobs "verify (analise-teste-usuario)" em ubuntu e windows: success no SHA 1c93736 e no dd7588b. Mas evidencias/analise.txt (citado em README l.21 e l.29, e 06-relatorio l.5 e l.25) NAO existe.
+
+--- desafios.md (opcional; "Voce nao e obrigado a fazer os desafios") -------
+ID    | Exigencia                                                              | Status    | Evidencia
+D-01  | Pode ser dupla                                                         | N/A       | Nenhum desafio_teste_* entregue.
+D-02  | Contribuicao da dupla rastreavel no repositorio                        | ATENDIDO  | git shortlog (secao 4): 70 commits, 3 autores identificados
+D-03  | Especificacao do desafio identificada no README                        | N/A       | Sem desafio entregue. A Prova 02 tem especificacao linkada em 2-bimestre/README.md.
+D-04  | Funcionamento dos casos de teste no README                             | N/A       | Sem desafio entregue. README raiz tem "Como executar" (l.40-56).
+D-05  | Colaboradores identificados no README (nome + RA)                      | ATENDIDO  | README.md (raiz) l.3-7: Breno Bertaglia Nosima 24113673-2; Felipe Galeti Goncora 24036480-2; Henrique Kendi Ikeda 24039456-2. Nota: o formulario da Prova 02 fala em "dupla"; trio nao esta previsto. Confirmar com o professor.
+D-06  | Limite de 5 desafios; padrao de nome de repositorio (desafio_teste_*)   | N/A       | Sem desafio entregue.
+
+--- Entrega (formulario da Prova 02 e README do professor) -------------------
+ID    | Exigencia                                                              | Status          | Evidencia
+E-01  | Todas as solucoes em UM projeto GitHub, e o link entregue deve mostrar a solucao | NAO ATENDIDO | A branch padrao do repositorio e main (commit d696469, "atv 2"), que nao tem a pasta 2-bimestre/ nem a README da Prova 02. A entrega esta somente em develop (1c93736), 56 commits a frente de main. Quem abrir o link do formulario ve a Prova 01 antiga.
+E-02  | Repositorio acessivel ("confiram se a URL esta completa e se o repositorio esta acessivel") | ATENDIDO (acesso) | git clone e API respondem sem autenticacao. Mas ver E-01: o conteudo visivel e o errado.
+
+=====================================================================
+2. AVALIACAO DA RUBRICA - SEMANA 11
+Rubrica (lista_exercicios_integracao_springboot.md, "Criterios de avaliacao sugeridos")
+=====================================================================
+Item da rubrica                              | Pontos | Estimativa | Justificativa
+Exercicio 1 - CT01 (parte de "CT01+CT02 = 4,0") | 2,0  | 2,0        | Cadastro, ID e consulta ao banco (com flush + clear, evitando o cache de 1o nivel). Correto.
+Exercicio 1 - CT02                           | 2,0    | 2,0        | Excecao com mensagem "Nome obrigatorio" e contagem relativa antes/depois. Correto.
+Exercicio 1 - CT03 (desafio)                 | 1,0    | 1,0        | Atualizacao 80 -> 95 verificada no repositorio, nome preservado.
+Exercicio 2 - CT04 (parte de "CT04+CT05 = 4,0") | 2,0 | 2,0        | Status 200, JSON, $.id numerico, $.nome, $.preco. Correto.
+Exercicio 2 - CT05                           | 2,0    | 2,0        | GET apos POST, JsonNode do GET igual ao do POST.
+README com evidencias e explicacao do isolamento | 1,0 | 1,0      | Saidas reais, tabela de casos, sabotagens, isolamento explicado. Pontos a melhorar abaixo.
+TOTAL                                        | 10,0   | 10,0       |
+
+Avaliacao das 5 perguntas de discussao (README, "Respostas as discussoes do enunciado"):
+Pergunta                                                   | Correta? | Completa? | Comentario
+(1) Por que repository.findById() e evidencia diferente do objeto do servico | Sim | Sim | Explica que o objeto do servico prova montagem, nao gravacao; mostra a armadilha do cache de 1o nivel (flush + clear); cita assertNotSame e a sabotagem 1. Excelente.
+(2) O que @Transactional faz ao fim do teste            | Sim | Sim | Rollback por padrao (@Rollback(true)) ao fim de cada metodo; flush envia SQL dentro da transacao, mas o rollback descarta tudo. Bom. Poderia citar que o rollback e o motivo do isolamento entre testes (ja esta na secao Isolamento).
+(3) Quais componentes o MockMvc exercita               | Sim | Sim | Cadeia completa: DispatcherServlet, mapeamento, Jackson, controller, service, repositorio, H2, resolvedores de excecao (400/415). Excelente.
+(4) Por que nao precisa de servidor HTTP real          | Sim | Sim | Objetos MockHttpServletRequest/Response em memoria, mesma thread, mesma transacao; contrasta com RANDOM_PORT. Excelente.
+(5) Diferenca para teste unitario com mocks             | Sim | Sim | Contrasta @WebMvcTest + @MockBean com @SpringBootTest; diz o que cada um detecta e o que nao detecta. Nota: @MockBean esta correto para Spring Boot 3.3.13, mas e deprecado a partir do 3.4 (use @MockitoBean). Irrelevante para este projeto.
+Achados A1-A4 (500 em vez de 400/404; campo ausente vira 0.0; sem PUT) - todos verificados no codigo (ProdutoRequest e um record com "double preco"; service lanca IllegalArgumentException sem handler). Sao observacoes que enriquecem a nota.
+
+=====================================================================
+3. SEMANA 14 - ESTADO E IMPACTO NA NOTA
+=====================================================================
+Estado verificado:
+- Preparacao: plano (01), roteiro (02), kit rapido, planilha (03), SUS (04), termo (05), relatorio com estrutura (06), analisador com 82 testes (CI verde nos dois SOs).
+- Execucao: ZERO. Nenhuma sessao realizada; planilha com cabecalho e linhas em branco; SUS vazio; relatorio com "pendente" em todas as secoes de resultado.
+Impacto:
+- O enunciado pede "executar o teste de usuario" e preencher os dados coletados (secao 6). Sem dados, o corretor nao consegue avaliar os criterios de sucesso (90% no carrinho; tempo medio ate 4 min) nem os erros e a taxa de sucesso. A entrega comprova apenas o planejamento.
+- Nao ha rubrica publicada para a Semana 14 nos arquivos do professor (so existe a da Semana 11), entao nao estimo pontos. Qualitativamente: a parte "executar" fica sem nota, e o corretor pode dar nota parcial pelo planejamento. Espere desconto relevante nessa semana se for entregue assim.
+- A coleta depende de pessoas, nao de codigo. Prazo: 22/11 (hoje e 20/11). Com 5 participantes, o roteiro de 8 min por pessoa cabe no prazo.
+
+=====================================================================
+4. DESAFIOS E RASTREABILIDADE DE CONTRIBUICAO
+=====================================================================
+Comando: git -C alunos shortlog -sne --all
+  61  Felipe Galeti Goncora <fgaletigongora@gmail.com>
+   5  Nosima <168672132+BrenoNosima@users.noreply.github.com>
+   1  Felipe Galeti <felipe.gongora@liveseo.com.br>
+   1  Henrique <riqueikeda2004@gmail.com>
+   1  Henrique-ikeda <168565276+Henrique-ikeda@users.noreply.github.com>
+   1  Nosima <breno.nosima@gmail.com>
+Consolidado por pessoa (mesmo autor com mais de uma identidade git):
+  - Felipe Galeti Goncora: 62 commits (2026-08-10 a 2026-11-20)
+  - Breno Bertaglia Nosima: 6 commits (2026-09-10 a 2026-09-12)
+  - Henrique Kendi Ikeda: 2 commits (2026-08-20)
+  - Total: 70 commits (git rev-list --all --count)
+Conclusao: a contribuicao de cada integrante e rastreavel pelo historico. Ha identidades duplicadas (dois nomes/e-mails para Felipe, Breno e Henrique), o que dificulta a leitura. Sugestao: .mailmap.
+Desafios (desafios.md): nenhum entregue, o que e permitido (item 6). Os itens D-03 e D-04 so se aplicariam a um desafio_teste_* entregue.
+
+=====================================================================
+5. LISTA DE DESCONTOS (ordenada por gravidade)
+=====================================================================
+#  | Gravidade | Onde (arquivo:linha ou fonte)                                                   | O que um corretor descontaria | Correcao sugerida
+D-01 | CRITICO  | Configuracao do GitHub (branch padrao)                                       | Link do formulario abre main (Prova 01 antiga, sem 2-bimestre/). A entrega esta em develop. | Definir develop como branch padrao (Settings > Branches) ou abrir PR develop -> main e fazer merge. Conferir o link enviado no formulario.
+D-02 | CRITICO  | CI run 44796992654 (SHA 1c93736), job "verify (estoque-tdd, ubuntu-latest)"; README raiz l.55 | CI vermelho no HEAD, contrariando a documentacao que promete verde em Ubuntu e Windows. | Reexecutar o job. Se reproduzir, corrigir (o log so e legivel pelo dono do repositorio). Registrar a causa. Nao divulgar "PASSOU" enquanto estiver vermelho.
+D-03 | ALTO     | RASTREABILIDADE.md:18 ("Secao 'Verificacao final' do PR") e :68 ("grep no PR") | Referencias a secao e a PR que nao existem. O unico PR do repositorio e "atv1" (Prova 01, fechado). | Trocar por evidencia real (comando e saida em evidencias/ ou hash do commit). Se houver PR da Prova 02, citar pelo numero.
+D-04 | ALTO     | 2-bimestre/semana14-teste-usuario-final/README.md:21 e :29; 06-relatorio-final.md:5 e :25 | Citam evidencias/analise.txt, que nao existe. Os "82 testes" e "100%" nao tem evidencia no repositorio. | Gerar com ./mvnw -q compile exec:java > ../evidencias/analise.txt e commitar a saida de ./mvnw verify (ou o log do CI).
+D-05 | ALTO     | Semana 14: 03-planilha-observacao.csv, 04-questionario-sus.csv, 06-relatorio-final.md | Atividade nao executada (0 participantes). Relatorio inteiro pendente. | Fazer no minimo 5 sessoes (02-roteiro-sessao.md; KIT-SESSAO-RAPIDA.md) ate 22/11, preencher CSVs, rodar o analisador, preencher 06.
+D-06 | MEDIO    | 2-bimestre/evidencias-validacao/links.txt:130 ("RESULTADO: PASSOU"); 2-bimestre/README.md:12 e README raiz l.36 ("simulacao de scripts de correcao") | Veredito escrito pela propria equipe dentro da entrega, com texto voltado ao corretor; contradiz o CI vermelho. | Remover do repositorio (ou mover para fora da entrega). Se mantiver, chamar de "verificacao de links" e tirar o veredito.
+D-07 | MEDIO    | semana10-tdd/README.md:45 ("O limiar do profile mutacao ... foi fixado no valor alcancado (83 e 84)") | Pode ser lido como rebaixar o gate de mutacao para passar. A justificativa (mutantes equivalentes) existe, mas esta no fim da frase. | Destacar que sao 4 mutantes equivalentes, com a justificativa antes do limiar. Ou excluir os equivalentes da metrica, com comentario no pom.xml.
+D-08 | BAIXO    | semana14-teste-usuario-final/01-plano-de-teste.md, secao 8 (Papeis) | Enunciado: Avaliador = "Colega que observa e registra". Plano: "Integrante da equipe". | Ajustar para "colega" ou justificar a excecao.
+D-09 | BAIXO    | semana10-tdd/README.md:104 ("resposta a 'discussao com o professor'") | O enunciado manda discutir com o professor; a README diz que houve discussao, mas nao registra data nem forma. | Registrar a data e o canal da discussao, ou reescrever como "decisao da equipe".
+D-10 | BAIXO    | Historico git (identidades duplicadas: Felipe, Breno, Henrique) | Dificulta a conferencia de contribuicao (secao 4). | Adicionar .mailmap consolidando as identidades.
+D-11 | BAIXO    | Formulario da Prova 02 ("Um membro da dupla deve preencher"); README raiz l.3-7 (trio) | Trio nao previsto no enunciado. | Confirmar com o professor, se houver duvida.
+D-12 | BAIXO    | Semana 14: 01-plano-de-teste.md (8 tarefas) x enunciado (7 itens) | Divergencia de numeracao, ja documentada no plano. Sem descontos, so risco de confusao. | Manter a nota explicativa (ja existe em 01 §3).
+
+Itens verificados e SEM desconto (para registro):
+- Links relativos: sem links quebrados (scripts/verificar-links.sh: 127 links, 0 quebrados; a checagem extra que fiz acusou falso positivo com %20, verificado com o script oficial).
+- Links externos (11 URLs): 200 em 10; mercadolivre.com.br devolve 403 (anti-bot, documentado no README da Semana 14).
+- Numeros de testes: Semana 10 = 25+26+17+19 = 87 (confere com 2-bimestre/README.md); Semana 11 = 34 (confere com evidencias/mvn-test.txt).
+- Testes do professor: BubbleSortTest, ContaBancariaTest e ProdutoTest identicos ao original; ProdutoTest/Carrinho com novos testes em arquivos proprios.
+- Projeto-base da Semana 11 (src/main) identico ao original.
+- Formula SUS e casos de referencia corretos.
+
+=====================================================================
+6. MOTIVOS DO VEREDITO
+=====================================================================
+FALHOU por requisitos de entrega e documentacao nao atendidos:
+  a) E-01: o repositorio, pelo link que o formulario pede, nao mostra a solucao (branch padrao = main).
+  b) S10-T2: o CI no commit entregue esta vermelho em um job da Semana 10, contrariando a README.
+  c) D-03 e D-04: a documentacao cita PR, secao e arquivo de evidencia que nao existem.
+Observacoes:
+  - O codigo das Semanas 10 e 11 esta correto e completo (ver checklist). Se a branch e o CI forem corrigidos, o que sobra e a Semana 14.
+  - A Semana 14 esta com preparacao completa, e a falta de coleta com pessoas reais nao depende de codigo. Mesmo assim, sem execucao, espere desconto relevante nessa semana (secao 3).
+
+RESULTADO: FALHOU
+
+=====================================================================
+2ª RODADA (HEAD 0195ba0)
+Data: 2026-11-20 (16:15, horario local)
+Clone novo da branch develop (apagado o anterior). Repositorio remoto nao foi alterado.
+Observacao: a linha "RESULTADO: FALHOU" acima e da 1ª rodada. O veredito atual e a ultima linha deste arquivo.
+=====================================================================
+
+0. ESCOPO DA RODADA
+- Codigo e testes: nenhum arquivo em src/ ou pom.xml mudou desde 1c93736 (git diff --name-only: vazio). Os resultados de Semanas 10 e 11 da 1ª rodada continuam valendo.
+- Mudancas desde 1c93736 (15 arquivos): CI, README raiz, 2-bimestre/README, Semana 10 README, RASTREABILIDADE, Semana 14 (plano, relatorio, README, analise-verify.txt) e os relatorios dos agentes A-E em 2-bimestre/evidencias-validacao/.
+- Estado do CI: run 44799863755 (HEAD 0195ba0), status completed, conclusion success, 18 de 18 jobs com success (4 mutacao PIT, 14 verify em ubuntu e windows, incluindo estoque-tdd ubuntu que falhou em 1c93736).
+- PR develop -> main: NAO existe. Unico PR do repositorio: #1 "atv1" (fechado, Prova 01).
+
+1. STATUS DOS DESCONTOS DA 1ª RODADA
+ID    | Gravidade (1ª rodada) | Status                     | Verificacao nesta rodada
+D-01  | CRITICO               | PENDENTE-USUARIO           | Branch padrao continua main (d696469). Entrega em develop (0195ba0). Nao existe PR develop -> main ainda. Merge do PR pelo usuario (regra da equipe). Ate la, o link do repositorio mostra o conteudo antigo.
+D-02  | CRITICO               | CORRIGIDO (com ressalva)   | CI do HEAD: 18/18 success. Retry do wrapper adicionado (.github/workflows/testes.yml:55-56 e :92-93, "for i in 1 2 3; do ./mvnw -B -v ..."). Ressalva: a causa exata da falha de 1c93736 nao foi identificada (log exige admin). Uma execucao verde nao prova estabilidade; acompanhar as proximas execucoes.
+D-03  | ALTO                  | CORRIGIDO                  | RASTREABILIDADE.md nao contem mais "Verificacao final" nem "no PR" (0 ocorrencias). As evidencias agora apontam para arquivos existentes: 2-bimestre/evidencias-validacao/agente-b-testes-do-professor.txt (existe). Todos os nomes de arquivo citados existem (ciclo1..ciclo7, *-final-verify, *-final-mutacao, sanidade-sabotagem, mvn-test, mvn-verify, analise-verify). Links markdown da RASTREABILIDADE: 4 de 4 resolvem.
+D-04  | ALTO                  | CORRIGIDO                  | semana14.../evidencias/analise-verify.txt existe: "Tests run: 82, Failures: 0, Errors: 0", "All coverage checks have been met", "BUILD SUCCESS". README l.21 e 06-relatorio l.5 agora dizem que analise.txt sera gerado apos a coleta. Esse arquivo ainda nao existe, e isso e esperado.
+D-05  | ALTO                  | PENDENTE-USUARIO           | Sessoes com pessoas reais: 0 (planilha 03-planilha-observacao.csv sem nenhuma linha com Sucesso preenchido; 04-questionario-sus.csv sem respostas). Prazo 22/11.
+D-06  | MEDIO                 | CORRIGIDO                  | links.txt e a saida real do script: o script termina com echo "RESULTADO: PASSOU" (scripts/verificar-links.sh:36). O conteudo do links.txt e identico a uma nova execucao do script (130 links, 0 quebrados), diferindo so pelo fim de linha CRLF gerado no Windows. Os textos "simulacao de scripts de correcao" foram trocados por "clone limpo, testes originais do professor, Linux e Windows, histórico TDD" (README raiz l.36; 2-bimestre/README.md l.12).
+D-07  | MEDIO                 | CORRIGIDO                  | semana10-tdd/README.md:45-46: o limiar 83/84 agora vem explicado "por causa desses 4 mutantes equivalentes, e nao por falta de teste".
+D-08  | BAIXO                 | CORRIGIDO                  | 01-plano-de-teste.md (§8, l.86): Avaliador = "Colega (integrante da equipe ou outro aluno da turma)".
+D-09  | BAIXO                 | CORRIGIDO                  | semana10-tdd/README.md:108: "O REQUISITOS.md deixa a escolha para 'discussao com o professor'. Abaixo esta a decisao da equipe, com a justificativa." O texto nao afirma mais uma conversa com o professor sem registro.
+D-10  | BAIXO                 | AINDA PROBLEMA (aceito)    | Sem .mailmap. A equipe decidiu nao mexer em autoria. Nao reprova.
+D-11  | BAIXO                 | AINDA PROBLEMA (relatado)  | Trio (3 integrantes) x "dupla" do formulario. Apenas relatado, sem acao, conforme instrucao.
+D-12  | BAIXO                 | AINDA PROBLEMA (documentado) | 8 tarefas no plano x 7 itens do PDF: a explicacao ja esta em 01-plano-de-teste.md §3. Sem acao.
+
+2. CHECKLIST: ITENS QUE MUDARAM DE STATUS
+- S10-T2 (CI verde no HEAD): NAO ATENDIDO -> ATENDIDO (18/18 success em 0195ba0).
+- S14-11 (analisador, evidencia em evidencias/): PARCIAL -> ATENDIDO (analise-verify.txt real, 82 testes).
+- E-01 (repositorio com a solucao no link): NAO ATENDIDO -> PENDENTE-USUARIO (merge do PR develop -> main pelo usuario).
+- S14-10 (executar com pessoas reais): NAO ATENDIDO -> PENDENTE-USUARIO (sessoes, sem mudanca).
+- Demais itens de Semanas 10, 11 e 14 (planejamento, analisador, RASTREABILIDADE): sem mudanca de status; reverificados.
+
+3. REVERIFICACOES DESTA RODADA
+- Links relativos (scripts/verificar-links.sh): 130 links, 0 quebrados, RESULTADO: PASSOU.
+- Links externos (16 URLs em .md e .txt): 14 respondem 200; 1 responde 404 (N-01, em relatorio); mercadolivre.com.br responde 403 (anti-bot, documentado).
+- Testes do professor: BubbleSortTest, ContaBancariaTest, ProdutoTest identicos aos originais (cmp); src/main da Semana 11 identico ao do professor.
+- Contagens: Semana 10 = 25+26+17+19 = 87; Semana 11 = 34; analisador = 82 (analise-verify.txt).
+
+4. PROBLEMAS NOVOS
+ID   | Gravidade | Onde                                                                                     | Problema | Correcao sugerida
+N-01 | BAIXO     | 2-bimestre/evidencias-validacao/agente-e-robustez-ambiente.txt:31                       | URL com 404: https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven-3.9.9/apache-maven-3.9.9-bin.zip (falta o segmento "apache-maven/"). A URL real usada pelo wrapper (.mvn/wrapper/maven-wrapper.properties, linha 19) responde 200. | Trocar pela URL do wrapper. Nao afeta codigo nem CI.
+N-02 | MEDIO (decisao da equipe) | 2-bimestre/evidencias-validacao/agente-a..e-*.txt (5 arquivos, inclusive este relatorio, com linha "RESULTADO") | Relatorios internos de revisao estao versionados dentro da entrega. Um corretor pode le-los como material de bastidor, em especial os vereditos. | Remover da branch entregue ou mover para fora do repositorio. A decisao e da equipe.
+
+5. MOTIVOS DO VEREDITO (2ª rodada)
+Nenhum requisito de codigo ou documentacao do enunciado esta nao atendido:
+  - Semanas 10 e 11: integralmente atendidas (codigo, testes, evidencias e discussoes).
+  - Semana 14: preparacao completa; execucao com pessoas reais pendente (depende exclusivamente do usuario).
+  - CI do HEAD verde.
+  - Link do repositorio: depende apenas do merge do PR develop -> main pelo usuario (pendencia humana).
+Pendencias que nao reprovam: D-01 (merge do PR) e D-05 (sessoes com pessoas reais), ambas de exclusiva responsabilidade do usuario.
+Ressalvas que nao reprovam: N-01 (URL em relatorio), N-02 (decisao da equipe), D-02 (causa da falha de 1c93736 nao identificada; acompanhar CI).
+
+RESULTADO: PASSOU

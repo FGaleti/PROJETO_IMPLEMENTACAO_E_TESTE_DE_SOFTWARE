@@ -1,0 +1,21 @@
+### Sabotagem 1: cadastrar() não chama repository.save  →  espera-se FALHA em CT01
+warning: in the working copy of 'aulas/SEMANA11/exercicios_integracao_springboot/src/main/java/br/edu/exemplo/service/ProdutoService.java', LF will be replaced by CRLF the next time Git touches it
+-  return repository.save(new Produto(nome,preco));
++  return new Produto(nome,preco);
+[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 12.85 s <<< FAILURE! -- in br.edu.exemplo.ProdutoServiceIntegrationTest
+[ERROR] br.edu.exemplo.ProdutoServiceIntegrationTest.deveCadastrarERecuperarProduto -- Time elapsed: 0.775 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: not <null>
+[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0
+[INFO] BUILD FAILURE
+
+### Sabotagem 2: validação aceita nome em branco  →  espera-se FALHA em CT02
+warning: in the working copy of 'aulas/SEMANA11/exercicios_integracao_springboot/src/main/java/br/edu/exemplo/service/ProdutoService.java', LF will be replaced by CRLF the next time Git touches it
+-  if(nome==null || nome.isBlank()) throw new IllegalArgumentException("Nome obrigatório");
++  if(nome==null) throw new IllegalArgumentException("Nome obrigatório");
+[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 12.98 s <<< FAILURE! -- in br.edu.exemplo.ProdutoServiceIntegrationTest
+[ERROR] br.edu.exemplo.ProdutoServiceIntegrationTest.naoDevePersistirProdutoComNomeEmBranco -- Time elapsed: 1.622 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown.
+[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0
+[INFO] BUILD FAILURE
+
+### src/main restaurado (git status src/main vazio abaixo):

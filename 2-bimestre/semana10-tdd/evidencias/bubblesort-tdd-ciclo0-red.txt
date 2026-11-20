@@ -1,0 +1,86 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< br.edu.exemplo:bubblesort-tdd >--------------------
+[INFO] Building bubblesort-tdd 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (jacoco-prepare-agent) @ bubblesort-tdd ---
+[INFO] argLine set to "-javaagent:C:\\Users\\felipe.gongora\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.12\\org.jacoco.agent-0.8.12-runtime.jar=destfile=C:\\Users\\felipe.gongora\\Documents\\Testes de Software\\PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE\\aulas\\SEMANA10\\bubblesort-tdd\\target\\jacoco.exec"
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ bubblesort-tdd ---
+[INFO] skip non existing resourceDirectory C:\Users\felipe.gongora\Documents\Testes de Software\PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE\aulas\SEMANA10\bubblesort-tdd\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ bubblesort-tdd ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug target 17] to target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ bubblesort-tdd ---
+[INFO] skip non existing resourceDirectory C:\Users\felipe.gongora\Documents\Testes de Software\PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE\aulas\SEMANA10\bubblesort-tdd\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ bubblesort-tdd ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug target 17] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.2:test (default-test) @ bubblesort-tdd ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running br.edu.exemplo.BubbleSortTest
+[ERROR] Tests run: 3, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.240 s <<< FAILURE! -- in br.edu.exemplo.BubbleSortTest
+[ERROR] br.edu.exemplo.BubbleSortTest.deveOrdenarVetorDesordenado -- Time elapsed: 0.108 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: array contents differ at index [0], expected: <1> but was: <5>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertArrayEquals.failArraysNotEqual(AssertArrayEquals.java:440)
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:241)
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:87)
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:83)
+	at org.junit.jupiter.api.Assertions.assertArrayEquals(Assertions.java:1281)
+	at br.edu.exemplo.BubbleSortTest.deveOrdenarVetorDesordenado(BubbleSortTest.java:16)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+[ERROR] br.edu.exemplo.BubbleSortTest.deveOrdenarVetorComValoresRepetidos -- Time elapsed: 0.004 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: array contents differ at index [0], expected: <1> but was: <3>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertArrayEquals.failArraysNotEqual(AssertArrayEquals.java:440)
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:241)
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:87)
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:83)
+	at org.junit.jupiter.api.Assertions.assertArrayEquals(Assertions.java:1281)
+	at br.edu.exemplo.BubbleSortTest.deveOrdenarVetorComValoresRepetidos(BubbleSortTest.java:42)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   BubbleSortTest.deveOrdenarVetorComValoresRepetidos:42 array contents differ at index [0], expected: <1> but was: <3>
+[ERROR]   BubbleSortTest.deveOrdenarVetorDesordenado:16 array contents differ at index [0], expected: <1> but was: <5>
+[INFO] 
+[ERROR] Tests run: 3, Failures: 2, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  7.512 s
+[INFO] Finished at: 2026-11-20T14:27:03-03:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.2:test (default-test) on project bubblesort-tdd: There are test failures.
+[ERROR] 
+[ERROR] See C:\Users\felipe.gongora\Documents\Testes de Software\PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE\aulas\SEMANA10\bubblesort-tdd\target\surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

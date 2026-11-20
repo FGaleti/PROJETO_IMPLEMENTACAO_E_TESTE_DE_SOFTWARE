@@ -1,0 +1,21 @@
+# Saídas de build (Maven)
+target/
+**/target/
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+.factorypath
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Diversos
+*.log
+.Rhistory

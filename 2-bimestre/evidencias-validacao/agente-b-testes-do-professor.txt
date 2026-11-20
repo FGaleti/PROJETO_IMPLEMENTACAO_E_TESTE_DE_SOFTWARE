@@ -1,0 +1,218 @@
+AGENTE B - TESTES DO PROFESSOR CONTRA A IMPLEMENTACAO DOS ALUNOS
+Data: 2026-11-20
+Repositorio alunos: FGaleti/PROJETO_IMPLEMENTACAO_E_TESTE_DE_SOFTWARE (branch develop)
+Repositorio professor: JoaoChoma/teste_software_2026
+Ambiente: Windows 11 + Git Bash, JDK 17.0.21.1, Maven 3.9.9 (mvn -B -ntp)
+Clones de trabalho: scratchpad/validacao/agente-b (alunos/ e prof/)
+Observacao de ambiente (core.longpaths): sem "git -c core.longpaths=true" (ou core.longpaths=true no
+repositorio), o git status/diff/checkout do clone dos alunos falha com "Filename too long" na Semana 11 e
+lista arquivos "M" falsos. Todas as verificacoes com git deste relatorio usaram core.longpaths=true.
+
+=====================================================================
+TAREFA 1 - Testes do professor (SEMANA10) copiados por cima dos alunos
+=====================================================================
+Comando: cp -r <prof>/src/test/java/. <alunos>/src/test/java/ ; mvn -B -ntp test
+
+bubblesort-tdd
+  Tests run: 3,  Failures: 0, Errors: 0  -- BubbleSortTest (professor)
+  Tests run: 9,  Failures: 0, Errors: 0  -- BubbleSortParadaAntecipadaTest (aluno)
+  Tests run: 13, Failures: 0, Errors: 0  -- BubbleSortCasosAdicionaisTest (aluno)
+  Tests run: 25, Failures: 0, Errors: 0, Skipped: 0
+  BUILD SUCCESS
+
+conta-bancaria-tdd-maven
+  Tests run: 4,  Failures: 0, Errors: 0  -- ContaBancariaTest (professor)
+  Tests run: 13, Failures: 0, Errors: 0  -- ContaBancariaCasosAdicionaisTest (aluno)
+  Tests run: 17, Failures: 0, Errors: 0, Skipped: 0
+  BUILD SUCCESS
+
+estoque-tdd
+  Tests run: 6,  Failures: 0, Errors: 0  -- ProdutoTest (professor)
+  Tests run: 13, Failures: 0, Errors: 0  -- ProdutoCasosAdicionaisTest (aluno)
+  Tests run: 19, Failures: 0, Errors: 0, Skipped: 0
+  BUILD SUCCESS
+
+Testes do professor: 100% passando nos tres projetos.
+git status --short (com core.longpaths=true): VAZIO -> a copia nao mudou nenhum arquivo rastreado
+(os testes do professor ja eram identicos aos dos alunos).
+Observacao de ambiente: sem core.longpaths=true, o git status lista 10 arquivos "M" da Semana 11
+com "Filename too long". Limite de caminho do Windows, nao alteracao de conteudo.
+
+=====================================================================
+TAREFA 2 - Teste cego do Carrinho (escrito somente a partir de REQUISITOS.md)
+=====================================================================
+Arquivo: 2-bimestre/semana10-tdd/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoCegoTest.java
+Copia de guarda: scratchpad/validacao/agente-b/evidencias-brutas/CarrinhoCegoTest.java
+Comando: mvn -B -ntp test
+
+Resultado:
+  Tests run: 9, Failures: 0, Errors: 0 -- CarrinhoCegoTest (R1 a R6)
+  (CarrinhoTest.java do aluno, 26 testes, tambem passou; total do modulo: 35)
+  BUILD SUCCESS
+
+Atritos de API: NENHUM. O arquivo compilou na primeira execucao com
+  new Carrinho(), adicionar(Produto), remover(Produto), getTotal(), new Produto(String, double).
+
+R5 (preco negativo), comportamento observado:
+  [R5] comportamento observado: LANCOU IllegalArgumentException: Preço do produto não pode ser negativo
+  (o teste aceita as duas decisoes; o aluno escolheu lancar excecao)
+  Obs.: os acentos aparecem corrompidos no log do console; e so exibicao, sem efeito nos testes.
+
+Fronteiras R6 (delta 0.001): 499.99 -> 499.99 OK; 500.00 -> 450.00 OK; 500.01 -> 450.009 OK;
+exemplo 600 -> 540 OK.
+
+Leitura do Carrinho.java dos alunos (feita APOS os testes):
+  - R1 a R6 atendidos; desconto com "subtotal >= 500" e fronteira correta.
+  - R5: validacao fica em adicionar(), nao no construtor de Produto; logo um Produto com preco
+    negativo ainda pode ser criado (apenas nao entra no carrinho). Ponto de discussao, nao defeito.
+  - remover() compara por identidade (Produto nao tem equals) e retorna boolean; coerente com o comentario.
+  - Produto nulo lanca IllegalArgumentException (validacao extra, sem conflito com os requisitos).
+  - Preco zero e aceito, conforme documentado.
+
+Depois do teste cego, o clone dos alunos foi restaurado (checkout + clean) para a tarefa 4.
+
+=====================================================================
+TAREFA 3 - Semana 11: src/main do professor copiado sobre o dos alunos
+=====================================================================
+Comando: cp -r <prof>/src/main/. <alunos>/src/main/ ; mvn -B -ntp test (no projeto dos alunos)
+
+  Tests run: 4,  -- ProdutoApiServidorRealIntegrationTest
+  Tests run: 9,  -- ProdutoControllerIntegrationComplementarTest
+  Tests run: 2,  -- ProdutoControllerIntegrationTest
+  Tests run: 16, -- ProdutoServiceIntegrationComplementarTest
+  Tests run: 3,  -- ProdutoServiceIntegrationTest
+  Tests run: 34, Failures: 0, Errors: 0, Skipped: 0
+  BUILD SUCCESS
+
+git status --short (src/main, com longpaths): VAZIO -> src/main identico ao do professor.
+
+=====================================================================
+TAREFA 4 - Diferencas entre professor e alunos (diff -r --strip-trailing-cr)
+=====================================================================
+Exclusoes: target, .mvn, mvnw, mvnw.cmd. Clone dos alunos restaurado antes (checkout + clean).
+
+SEMANA10 - bubblesort-tdd
+  [pom.xml alterado] Acrescentou jacoco-maven-plugin, pitest-maven e profile "mutacao".
+     Tags originais preservadas (0 linhas removidas; junit-jupiter e surefire mantidos).
+  [implementacao esperada em src/main] BubbleSort.java
+  [arquivo so dos alunos (adicao)] BubbleSortCasosAdicionaisTest.java, BubbleSortParadaAntecipadaTest.java
+  [teste do professor] BubbleSortTest.java IDENTICO
+
+SEMANA10 - conta-bancaria-tdd-maven
+  [pom.xml alterado] Reformatado (quebras de linha) e acrescentou jacoco/pitest + profile.
+     Tags do professor (groupId, artifactId, version, junit-jupiter, surefire) preservadas.
+  [implementacao esperada em src/main] ContaBancaria.java
+  [arquivo so dos alunos (adicao)] ContaBancariaCasosAdicionaisTest.java
+  [teste do professor] ContaBancariaTest.java IDENTICO
+
+SEMANA10 - estoque-tdd
+  [pom.xml alterado] Acrescentou jacoco/pitest + profile. Tags originais preservadas.
+  [implementacao esperada em src/main] Produto.java
+  [arquivo so dos alunos (adicao)] ProdutoCasosAdicionaisTest.java
+  [teste do professor] ProdutoTest.java IDENTICO
+
+SEMANA10 - carrinho-compras-tdd
+  [pom.xml alterado] Acrescentou jacoco/pitest + profile. Tags do professor preservadas.
+  [implementacao esperada em src/main] Carrinho.java (Produto.java IDENTICO)
+  [arquivo de teste do professor alterado (PROBLEMA)] src/test/java/br/edu/exemplo/CarrinhoTest.java
+     O professor entregou um CarrinhoTest.java VAZIO (sem @Test, so a classe). Os alunos escreveram a
+     suite inteira. Pelo REQUISITOS.md esse arquivo e o local onde os alunos devem escrever os testes,
+     entao e um esqueleto a preencher, nao um teste de referencia.
+
+SEMANA11 - exercicios_integracao_springboot
+  [pom.xml alterado] Acrescentou jacoco-maven-plugin e profile/plugins adicionais. Dependencias originais
+     preservadas: spring-boot-starter-web, spring-boot-starter-data-jpa, h2, spring-boot-starter-test
+     (4 <dependency> em ambos); parent e spring-boot-maven-plugin inalterados.
+  [README.md alterado] Documentacao reescrita pelos alunos (nao e codigo de teste).
+  [arquivo so dos alunos (adicao)] ENUNCIADO.md, evidencias/ (3 arquivos),
+     ProdutoApiServidorRealIntegrationTest.java, ProdutoControllerIntegrationComplementarTest.java,
+     ProdutoServiceIntegrationComplementarTest.java
+  [arquivo de teste do professor alterado (PROBLEMA)] ProdutoControllerIntegrationTest.java
+     Esqueleto com comentarios "TODO EX2" preenchido pelos alunos (CT04, CT05).
+  [arquivo de teste do professor alterado (PROBLEMA)] ProdutoServiceIntegrationTest.java
+     Esqueleto com comentarios "TODO EX1 / TODO DESAFIO" preenchido pelos alunos (CT01, CT02, CT03).
+  [implementacao esperada em src/main] nenhuma diferenca (confirmado na tarefa 3).
+
+Nota sobre os 3 "PROBLEMA": os arquivos do professor eram esqueletos (TODO / classe vazia), nao testes
+de referencia. O preenchimento e o esperado pelo exercicio, mas pela regra da tarefa 5 ("nenhum teste do
+professor alterado") eles contam como alteracao. Considerar esses esqueletos como "a preencher" e uma
+decisao de quem valida o resultado.
+
+=====================================================================
+RESUMO
+=====================================================================
+- Testes de referencia do professor (BubbleSortTest, ContaBancariaTest, ProdutoTest): 100% passando e IDENTICOS.
+- Semana 11: 34/34 passando com src/main do professor; src/main identico.
+- Teste cego do Carrinho: 9/9 passando, sem atritos de API; R5 = IllegalArgumentException.
+- Testes do professor alterados: CarrinhoTest.java (esqueleto vazio), ProdutoControllerIntegrationTest.java e
+  ProdutoServiceIntegrationTest.java (esqueletos TODO preenchidos).
+
+RESULTADO (1a execucao, criterio literal - SUPERADO pela reavaliacao abaixo): FALHOU
+
+=====================================================================
+REAVALIACAO COM CRITERIO CORRIGIDO
+=====================================================================
+Motivo: a primeira execucao marcou FALHOU pelo criterio literal ("nenhum teste do professor alterado"),
+mas tres arquivos do professor sao ESQUELETOS que o enunciado manda preencher, nao testes prontos.
+Criterio corrigido: (a) classe e nomes dos metodos originais mantidos; (b) anotacoes originais mantidas.
+"Teste do professor alterado (PROBLEMA)" vale apenas para testes que ja vinham PRONTOS.
+
+--- Fontes lidas no clone do professor ---
+1) aulas/SEMANA10/carrinho-compras-tdd/src/test/java/br/edu/exemplo/CarrinhoTest.java:
+   comentario: "Os testes NAO estao implementados. Para cada requisito apresentado em REQUISITOS.md: 1. escreva
+   primeiro o teste; ..."  e a classe: "class CarrinhoTest { }" (vazia).
+2) aulas/SEMANA10/carrinho-compras-tdd/REQUISITOS.md, linha 9:
+   "- `CarrinhoTest`: classe onde deverão ser escritos os testes."
+3) aulas/SEMANA11/lista_exercicios_integracao_springboot.md, linha 5:
+   "**Orientacao:** usar o projeto-base fornecido; completar os metodos `TODO` das classes de teste."
+   linha 51: "o projeto-base contem a aplicacao funcional e os testes com espacos `TODO`, sem as asserções prontas."
+
+--- (a) classe e metodos originais (grep real) ---
+Comando: grep -nE '@SpringBootTest|@Transactional|@AutoConfigureMockMvc|void (...)\b|^(public )?class ' <arquivo>
+
+CarrinhoTest.java
+  PROF:    15:class CarrinhoTest {
+  ALUNOS:  28:class CarrinhoTest {          (classe mantida; 18 @Test adicionados pelos alunos)
+
+ProdutoControllerIntegrationTest.java
+  PROF:    11:@SpringBootTest @AutoConfigureMockMvc @Transactional
+           12:class ProdutoControllerIntegrationTest {
+           14: @Test void deveCadastrarProdutoPelaApi() throws Exception {
+           18: @Test void deveBuscarProdutoPelaApi() throws Exception {
+  ALUNOS:  14:@SpringBootTest @AutoConfigureMockMvc @Transactional
+           15:class ProdutoControllerIntegrationTest {
+           18: @Test void deveCadastrarProdutoPelaApi() throws Exception {
+           29: @Test void deveBuscarProdutoPelaApi() throws Exception {
+
+ProdutoServiceIntegrationTest.java
+  PROF:    9:@SpringBootTest @Transactional
+           10:class ProdutoServiceIntegrationTest {
+           13: @Test void deveCadastrarERecuperarProduto(){
+           17: @Test void naoDevePersistirProdutoComNomeEmBranco(){
+           21: @Test void deveAtualizarPrecoPersistido(){
+  ALUNOS:  12:@SpringBootTest @Transactional
+           13:class ProdutoServiceIntegrationTest {
+           29: @Test void deveCadastrarERecuperarProduto(){
+           42: @Test void naoDevePersistirProdutoComNomeEmBranco(){
+           56: @Test void deveAtualizarPrecoPersistido(){
+
+Resultado (a): OK nos tres arquivos. Classe e os 5 nomes de metodos originais presentes nos alunos.
+Resultado (b): OK. @SpringBootTest, @Transactional e @AutoConfigureMockMvc presentes nos alunos
+  (as anotacoes aparecem na mesma linha do prof, com as mesmas grafias).
+
+--- Testes prontos do professor (nao podem ser alterados) ---
+Conferido na tarefa 4 (diff -rq --strip-trailing-cr): BubbleSortTest.java, ContaBancariaTest.java e
+ProdutoTest.java IDENTICOS aos dos alunos. Nao ha PROBLEMA nesses arquivos.
+
+--- Demais itens (ja verificados nas tarefas 1 a 4) ---
+- Semana 10: 25/25, 17/17, 19/19 passando (BUILD SUCCESS) com os testes do professor.
+- Teste cego do Carrinho: 9/9 passando, sem atritos de API.
+- Semana 11: 34/34 passando com src/main do professor; src/main identico.
+- pom.xml: dependencias e tags originais preservadas em todos os projetos (so acrescimos de jacoco/pitest).
+- git status --short (core.longpaths=true) do clone dos alunos: vazio apos restauracao (0 linhas).
+
+--- Conclusao da reavaliacao ---
+Com o criterio corrigido, nenhum teste pronto do professor foi alterado e os esqueletos mantem classe,
+metodos e anotacoes. Todos os itens de aprovacao (1 e 3 com 100%, teste cego compila e passa) atendidos.
+
+RESULTADO: PASSOU
